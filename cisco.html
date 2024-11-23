@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certificados y Cursos de Cisco</title>
+  <title>Cursos de Cisco</title>
   <style>
-
-
     /* Estilos generales */
     body {
       font-family: 'Arial', sans-serif;
@@ -14,6 +12,13 @@
       margin: 0;
       padding: 0;
       color: #333;
+      cursor: url('https://cdn.jsdelivr.net/gh/keenethics/cursor@2.0.0/img/animated-cursor.svg'), auto; /* Cursor animado */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Fondo y animaciones suaves */
+    body:hover {
+      background-color: #e0f7fa; /* Cambia el color de fondo al pasar el mouse */
     }
 
     header {
@@ -21,19 +26,44 @@
       padding: 20px;
       text-align: center;
       color: white;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    header:hover {
+      background-color: #0056b3; /* Cambia el color al pasar el mouse */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    header:hover h1 {
+      transform: translateY(-5px);
     }
 
     /* Contenedor principal de los cursos */
     .courses-container {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       padding: 40px 20px;
+      gap: 20px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .course-card {
@@ -41,11 +71,10 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       padding: 20px;
-      width: 90%;
-      max-width: 1000px;
-      margin-bottom: 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 40px;
       display: flex;
-      flex-direction: row;
       align-items: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
@@ -56,22 +85,38 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .course-card img {
-      width: 250px;
-      height: 150px;
-      object-fit: cover;
+    /* Ajustes para la imagen */
+    .course-card img,
+    .course-card iframe {
+      width: 500px; /* Aumentamos el tamaño de las imágenes */
+      height: auto;
       border-radius: 10px;
-      margin-right: 20px;
+      margin-right: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .course-card:hover img {
+      transform: scale(1.1); /* Aumentamos la imagen al pasar el mouse */
+    }
+
+    /* Ajustes para el texto */
+    .course-card div {
+      flex: 1; /* Para que el texto ocupe el espacio restante */
     }
 
     .course-card h3 {
       color: #007bff;
-      font-size: 1.5rem;
-      margin-bottom: 10px;
+      font-size: 2rem; /* Aumentamos el tamaño del texto */
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .course-card:hover h3 {
+      color: #0056b3; /* Cambia el color al pasar el mouse */
     }
 
     .course-card p {
-      font-size: 1rem;
+      font-size: 1.2rem; /* Aumentamos el tamaño del texto */
       color: #555;
       line-height: 1.6;
       margin-bottom: 20px;
@@ -80,16 +125,17 @@
     .course-card button {
       background-color: #007bff;
       color: white;
-      padding: 10px 20px;
-      font-size: 1rem;
+      padding: 15px 30px;
+      font-size: 1.2rem; /* Aumentamos el tamaño del texto */
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.3s;
     }
 
     .course-card button:hover {
       background-color: #0056b3;
+      transform: translateY(-3px); /* Efecto de elevación en el botón */
     }
 
     /* Footer */
@@ -101,118 +147,163 @@
       position: fixed;
       width: 100%;
       bottom: 0;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    footer:hover {
+      opacity: 1;
     }
 
     footer a {
       color: white;
       text-decoration: none;
     }
+
+    /* Botón Volver al índice */
+    .back-button {
+   position: absolute;
+   top: 20px;
+   left: 20px;
+   background-color: #007bff;
+   padding: 10px 20px;
+   border-radius: 5px;
+   color: white;
+   text-decoration: none;
+   font-size: 1.1rem;
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+   transition: transform 0.3s ease;
+   z-index: 1000;  /* Asegura que el botón esté por encima de otros elementos */
+}
+
+
+    .back-button:hover {
+      transform: scale(1.1);
+      background-color: #0056b3;
+    }
+
+    .back-button a {
+      color: white;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
+  <a class="back-button" href="index.html">Volver al índice</a>
 
-  <!-- Encabezado -->
+
   <header>
-    <h1>Certificados y Cursos de Cisco</h1>
-</header>
+    <h1>Cursos de Cisco</h1>
+  </header>
 
-<div class="courses-container">
+  <div class="courses-container">
     <!-- Curso 1: Ansible for Network Automation -->
     <div class="course-card">
-      <!-- Reemplazamos la imagen por el iframe que mostrará el PDF -->
-      <div class="pdf-container">
-        <iframe src="file:///C:/Users/Dadmin/Desktop/CERTIFICADOS/cisco/1.PNG" width="650" height="350" style="border-radius: 10px;"></iframe>
-      </div>
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~1JW43CKGXNNC/CERTIFICATE_LANDING_PAGE~1JW43CKGXNNC.jpeg" alt="Ansible for Network Automation">
       <div>
         <h3>Ansible for Network Automation</h3>
         <p>Un curso en línea sin crédito autorizado por Cisco Learning and Certifications, ofrecido a través de Coursera. Aprende a automatizar tareas de red usando Ansible.</p>
         <button onclick="location.href='https://coursera.org/verify/1JW43CKGXNNC'">Ver más</button>
       </div>
     </div>
+
+    <!-- Curso 2: Introduction to Network Automation -->
     <div class="course-card">
-      <img src="https://via.placeholder.com/250x150" alt="Introduction to Network Automation">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~UVKACJYZUTDD/CERTIFICATE_LANDING_PAGE~UVKACJYZUTDD.jpeg" alt="Introduction to Network Automation">
       <div>
         <h3>Introduction to Network Automation</h3>
         <p>Curso autorizado por Cisco Learning and Certifications a través de Coursera. Introducción a la automatización de redes, gestionando infraestructuras y flujos de trabajo.</p>
-        <button>Ver más</button>
+        <button onclick="location.href='https://coursera.org/verify/DS14E0C7MRQ0'">Ver más</button>
       </div>
     </div>
 
-    <!-- Curso 4: Using APIs for Network Automation -->
+    <!-- Curso 3: Using APIs for Network Automation -->
     <div class="course-card">
-      <img src="https://via.placeholder.com/250x150" alt="Using APIs for Network Automation">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~68JJ5KZHLNBZ/CERTIFICATE_LANDING_PAGE~68JJ5KZHLNBZ.jpeg" alt="Using APIs for Network Automation">
       <div>
         <h3>Using APIs for Network Automation</h3>
         <p>Curso autorizado por Cisco Learning and Certifications, ofrecido a través de Coursera. Aprende a usar APIs para automatizar tareas en redes.</p>
-        <button>Ver más</button>
+        <button onclick="location.href='https://coursera.org/verify/UVKACJYZUTDD'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 4: DevOps for Network Automation (NetDevOps) -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~M0B1QTUG478S/CERTIFICATE_LANDING_PAGE~M0B1QTUG478S.jpeg" alt="DevOps for Network Automation">
+      <div>
+        <h3>DevOps for Network Automation (NetDevOps)</h3>
+        <p>Curso autorizado por Cisco Learning and Certifications, ofrecido a través de Coursera. Introducción a la programabilidad basada en modelos para redes.</p>
+        <button onclick="location.href='https://coursera.org/verify/68JJ5KZHLNBZ'">Ver más</button>
       </div>
     </div>
 
     <!-- Curso 5: Introducing Model-Driven Programmability -->
     <div class="course-card">
-      <img src="https://via.placeholder.com/250x150" alt="Introducing Model-Driven Programmability">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~DS14E0C7MRQ0/CERTIFICATE_LANDING_PAGE~DS14E0C7MRQ0.jpeg" alt="Introducing Model-Driven Programmability">
       <div>
         <h3>Introducing Model-Driven Programmability</h3>
         <p>Curso autorizado por Cisco Learning and Certifications, ofrecido a través de Coursera. Introducción a la programabilidad basada en modelos para redes.</p>
-        <button>Ver más</button>
+        <button onclick="location.href='https://coursera.org/verify/M0B1QTUG478S'">Ver más</button>
       </div>
     </div>
 
     <!-- Curso 6: Network Automation Engineering Fundamentals -->
     <div class="course-card">
-      <img src="https://via.placeholder.com/250x150" alt="Network Automation Engineering Fundamentals">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~HMJD8FYRC2PL/CERTIFICATE_LANDING_PAGE~HMJD8FYRC2PL.jpeg" alt="Network Automation Engineering Fundamentals">
       <div>
         <h3>Network Automation Engineering Fundamentals</h3>
         <p>Curso autorizado por Cisco Learning and Certifications, dirigido a ingenieros de redes. Fundamentos de ingeniería de automatización de redes.</p>
-        <button>Ver más</button>
+        <button onclick="location.href='https://coursera.org/verify/specialization/HMJD8FYRC2PL'">Ver más</button>
       </div>
     </div>
 
-    <!-- Curso 7: CCNAv7: Introduction to Networks -->
-    <div class="course-card">
-      <img src="https://via.placeholder.com/250x150" alt="CCNAv7: Introduction to Networks">
-      <div>
-        <h3>CCNAv7: Introduction to Networks</h3>
-        <p>Curso de introducción a redes, parte del programa CCNA. Aprende los conceptos básicos sobre redes y dispositivos conectados.</p>
-        <button>Ver más</button>
-      </div>
-    </div>
+ <!-- Curso 7: CCNAv7: Introduction to Networks -->
+ <div class="course-card">
+  <iframe src="https://www.netacad.com/s/ff9e491c-49be-4734-803e-a79e6e83dab1/users/57883551-5c4d-43b2-81cf-c8eb1a13334e/CCNA-_Introduction_to_Networks_certificate_danielmateoromero9s-gmail-com_2e0ba337-0d37-44ba-b82a-1302a6560313.pdf?Expires=1732381259&Signature=lTM7FNNjHUnHoFuFx-meitsokoMjOanqNqLQ7AMsaQCCDWXptmESxyX61ZUr5LgGG6iT4frfqNrNcLARYOOfdNXlUEgevjqIEWD1Pech9IUCUHPh1tBOJrWdK0hRmb1mIR2ec3iMEUPETnIq1LlcLS3Cx5C2zev1K9~prHU8-k7u3yuA5t6yfTaPeGMz08g5flOGiUEmnTWjfV~KORENDlzE7LGJyCyOKUxa7rFmWQ4y5052rDsJfWVcg4gMMcYmcp4Py8RfvtlBNBG2cfN~UB~pH1gnT0GEHxHvu6ryK6kzC1N62S~8R2mbGkERshGp6Ooi2yTVL8-bZW71fFMkxw__&Key-Pair-Id=K2KLPFOPQWYG51#view=Fit&toolbar=0&statusbar=0&messages=0&navpanes=0&scrollbar=0" width="1900" height="450" style="border-radius: 10px;"></iframe>
+<div>
+  <h3>CCNAv7: Introduction to Networks</h3>
+  <p>Curso de introducción a redes, parte del programa CCNA. Aprende los conceptos básicos sobre redes y dispositivos conectados.</p>
+  <button onclick="location.href='https://coursera.org/verify/specialization/HMJD8FYRC2PL'">Ver más</button>      </div>
+</div>
+</div>
 
-    <!-- Curso 8: CCNAv7: Switching, Routing -->
-    <div class="course-card">
-      <img src="https://via.placeholder.com/250x150" alt="CCNAv7: Switching, Routing">
-      <div>
-        <h3>CCNAv7: Switching, Routing</h3>
-        <p>Curso que cubre las técnicas avanzadas de conmutación y enrutamiento en redes, parte del programa CCNA v7.</p>
-        <button>Ver más</button>
-      </div>
-    </div>
+<!-- Curso 8: CCNAv7: Switching, Routing -->
+<div class="course-card">
+  <iframe src="https://www.netacad.com/s/ff9e491c-49be-4734-803e-a79e6e83dab1/users/57883551-5c4d-43b2-81cf-c8eb1a13334e/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate_danielmateoromero9s-gmail-com_99044bc7-d5b6-48d8-a763-e76047f0d177.pdf?Expires=1732381402&Signature=GxVi8hgnvkMVtaKjKlGH8p06hH0x914mwQW2J7R~~FqaqsRQHKCi6j~7KOMGKZqjhVpKi~wcvHb0smqBEtq3ABO2ox6KL1DzU1NHEHzAdh8d3so8XoOpvFaJg1qILasMsOJDZ~5lgTrIzhowyvS-DVHXPTj8c4OBZ7YwQ2BGvt5XSMa3vsuDjMaggMO-TCiQEug01mibNkbAWAlQvCB7lCzqj7jsG8fQZ24sU1Xr7opbEJqUTjqRrapUdQx5XZn4G~JudiCZfh43yRFn8RIT4wXVcK1J97Box2UzYUZhm5PlMLT31f3yearh4QytmE0TWswzjOVK2Oty3kVtir22Jw__&Key-Pair-Id=K2KLPFOPQWYG51#view=Fit&toolbar=0&statusbar=0&messages=0&navpanes=0&scrollbar=0" width="900" height="450" style="border-radius: 10px;"></iframe>
+<div>
+  <h3>CCNAv7: Switching, Routing</h3>
+  <p>Curso que cubre las técnicas avanzadas de conmutación y enrutamiento en redes, parte del programa CCNA v7.</p>
+  <button>Ver más</button>
+</div>
+</div>
 
-    <!-- Curso 9: IT Essentials: PC Hardware and Software -->
-    <div class="course-card">
-      <img src="https://via.placeholder.com/250x150" alt="IT Essentials: PC Hardware and Software">
-      <div>
-        <h3>IT Essentials: PC Hardware and Software</h3>
-        <p>Curso a través de Cisco Networking Academy. Aprende sobre hardware y software de PC, desde la instalación hasta el mantenimiento básico.</p>
-        <button>Ver más</button>
-      </div>
-    </div>
+<!-- Curso 9: IT Essentials: PC Hardware and Software -->
+<div class="course-card">
+  <iframe src="https://www.netacad.com/s/ff9e491c-49be-4734-803e-a79e6e83dab1/users/57883551-5c4d-43b2-81cf-c8eb1a13334e/IT_Essentials_7_certificate_danielmateoromero9s-gmail-com_54a84a24-9078-4e71-b96e-4565c488a8f7.pdf?Expires=1732381238&Signature=hYMpDdPP1ovtlpthZ1ek5LuB6OXYK3balj8T2qMwqTYQaDL3jinM13UD-D5PwY71ZaQAaSENt2YenllqZJgr80~eYzU9jMugWNTvrinxBufwpZOCIQKaQ9eA-fCGXUEUmt8zXEZ0R9KXn9EiB37CW4qGwVQj3~CUMoxMshB2qdp04X4VmH-G0IiBPjX46lCSQFOz-ur6KOWDnfpoZ-RxaLWv7lxSs2rvyff2AHw7YjO~Q9HZ7vDEk8UpH-Cmf9zq649qCekrYIchEF-duIttLp3Rroi0qtPOUpsJpQUb~xh~HCzmY2QRTpWjahGvBy1N7FrIelslD9pM8KpRv4-GQQ__&Key-Pair-Id=K2KLPFOPQWYG51#view=Fit&toolbar=0&statusbar=0&messages=0&navpanes=0&scrollbar=0" width="900" height="450" style="border-radius: 10px;"></iframe>
+<div>
+  <h3>IT Essentials: PC Hardware and Software</h3>
+  <p>Curso a través de Cisco Networking Academy. Aprende sobre hardware y software de PC, desde la instalación hasta el mantenimiento básico.</p>
+  <button>Ver más</button>
+</div>
+</div>
 
-    <!-- Curso 10: Wireless Essentials -->
-    <div class="course-card">
-      <img src="https://via.placeholder.com/250x150" alt="Wireless Essentials">
-      <div>
-        <h3>Wireless Essentials</h3>
-        <p>Curso que cubre lo esencial de las redes inalámbricas, desde la configuración hasta la solución de problemas.</p>
-        <button>Ver más</button>
-      </div>
-    </div>
-  </div>
+<!-- Curso 10: Wireless Essentials -->
+<div class="course-card">
+<img src="\Users\Dadmin\Desktop\CERTIFICADOS\cisco\Captura.PNG" alt="Wireless Essentials">
+<div>
+  <h3>Wireless Essentials</h3>
+  <p>Curso que cubre lo esencial de las redes inalámbricas, desde la configuración hasta la solución de problemas.</p>
+  <button>Ver más</button>
+</div>
+</div>
+</div>
 
-  <!-- Footer -->
-  <footer>
-    <p>Desarrollado por Daniel Mateo Romero Madrid | <a href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a></p>
-  </footer>
+<!-- Footer -->
+<footer>
+<p> Daniel Mateo Romero Madrid | <a href="daniromema@gmail.com">daniromema@gmail.com</a></p>
+</footer>
 
 </body>
 </html>

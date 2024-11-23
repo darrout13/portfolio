@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos de Ciberseguridad de Google</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      cursor: url('https://cdn.jsdelivr.net/gh/keenethics/cursor@2.0.0/img/animated-cursor.svg'), auto; /* Cursor animado */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Fondo y animaciones suaves */
+    body:hover {
+      background-color: #e0f7fa; /* Cambia el color de fondo al pasar el mouse */
+    }
+
+    header {
+      background-color: #007bff;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    header:hover {
+      background-color: #0056b3; /* Cambia el color al pasar el mouse */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    header:hover h1 {
+      transform: translateY(-5px);
+    }
+
+    /* Contenedor principal de los cursos */
+    .courses-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 20px;
+      gap: 20px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .course-card {
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .course-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Ajustes para la imagen */
+    .course-card img,
+    .course-card iframe {
+      width: 500px; /* Aumentamos el tamaño de las imágenes */
+      height: auto;
+      border-radius: 10px;
+      margin-right: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .course-card:hover img {
+      transform: scale(1.1); /* Aumentamos la imagen al pasar el mouse */
+    }
+
+    /* Ajustes para el texto */
+    .course-card div {
+      flex: 1; /* Para que el texto ocupe el espacio restante */
+    }
+
+    .course-card h3 {
+      color: #007bff;
+      font-size: 2rem; /* Aumentamos el tamaño del texto */
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .course-card:hover h3 {
+      color: #0056b3; /* Cambia el color al pasar el mouse */
+    }
+
+    .course-card p {
+      font-size: 1.2rem; /* Aumentamos el tamaño del texto */
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .course-card button {
+      background-color: #007bff;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2rem; /* Aumentamos el tamaño del texto */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .course-card button:hover {
+      background-color: #0056b3;
+      transform: translateY(-3px); /* Efecto de elevación en el botón */
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    footer:hover {
+      opacity: 1;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Botón Volver al índice */
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      z-index: 1000;  /* Asegura que el botón esté por encima de otros elementos */
+    }
+
+    .back-button:hover {
+      transform: scale(1.1);
+      background-color: #0056b3;
+    }
+
+    .back-button a {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <a class="back-button" href="index.html">Volver al índice</a>
+
+  <header>
+    <h1>Cursos de Ciberseguridad de Google</h1>
+  </header>
+
+  <div class="courses-container">
+    <!-- Curso 1: Foundations of Cybersecurity -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~R8OEHUNLUI2Z/CERTIFICATE_LANDING_PAGE~R8OEHUNLUI2Z.jpeg" alt="Foundations of Cybersecurity">
+      <div>
+        <h3>Foundations of Cybersecurity</h3>
+        <p>Curso introductorio a la ciberseguridad, cubriendo conceptos básicos para defenderte en el mundo digital.</p>
+        <button onclick="location.href='https://coursera.org/verify/R8OEHUNLUI2Z'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 2: Modelos de transformador y modelo BERT -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~7LFRVMEWGDXC/CERTIFICATE_LANDING_PAGE~7LFRVMEWGDXC.jpeg" alt="Modelos de transformador y modelo BERT">
+      <div>
+        <h3>Modelos de transformador y modelo BERT</h3>
+        <p>Curso sobre cómo los modelos de transformador y BERT están revolucionando el análisis de datos y el procesamiento de lenguaje natural.</p>
+        <button onclick="location.href='https://coursera.org/verify/7LFRVMEWGDXC'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 3: Seguridad informática: defensa contra las artes oscuras digitales -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~V2S0689OPV3M/CERTIFICATE_LANDING_PAGE~V2S0689OPV3M.jpeg" alt="Seguridad informática">
+      <div>
+        <h3>Seguridad informática: defensa contra las artes oscuras digitales</h3>
+        <p>Curso sobre cómo defender tus sistemas contra amenazas avanzadas y técnicas de hacking.</p>
+        <button onclick="location.href='https://coursera.org/verify/V2S0689OPV3M'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 4: Sistemas operativos y tú -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~RERJ1BQYEYN3/CERTIFICATE_LANDING_PAGE~RERJ1BQYEYN3.jpeg" alt="Sistemas operativos y tú">
+      <div>
+        <h3>Sistemas operativos y tú: Convertirse en un usuario avanzado</h3>
+        <p>Aprende sobre sistemas operativos y cómo gestionar tus dispositivos de manera eficiente.</p>
+        <button onclick="location.href='https://coursera.org/verify/RERJ1BQYEYN3'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 5: Administración de sistemas y servicios de infraestructura de TI -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~Q5102ZG2PQ7O/CERTIFICATE_LANDING_PAGE~Q5102ZG2PQ7O.jpeg" alt="Administración de TI">
+      <div>
+        <h3>Administración de sistemas y servicios de infraestructura de TI</h3>
+        <p>Curso sobre cómo administrar la infraestructura de TI, enfocándose en la configuración de servidores y redes.</p>
+        <button onclick="location.href='https://coursera.org/verify/Q5102ZG2PQ7O'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 6: Los bits y bytes de las redes informáticas -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~AAPK65AULD3H/CERTIFICATE_LANDING_PAGE~AAPK65AULD3H.jpeg" alt="Redes informáticas">
+      <div>
+        <h3>Los bits y bytes de las redes informáticas</h3>
+        <p>Curso que cubre los conceptos fundamentales de las redes informáticas, incluyendo el manejo de protocolos y dispositivos.</p>
+        <button onclick="location.href='https://coursera.org/verify/AAPK65AULD3H'">Ver más</button>
+      </div>
+    </div>
+    <div class="courses-container">
+        <!-- Curso 1: Aspectos básicos de la asistencia técnica -->
+        <div class="course-card">
+          <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~2482NBBE70VN/CERTIFICATE_LANDING_PAGE~2482NBBE70VN.jpeg" alt="Aspectos básicos de la asistencia técnica">
+          <div>
+            <h3>Aspectos básicos de la asistencia técnica</h3>
+            <p>Curso sobre los principios fundamentales de la asistencia técnica y cómo abordar problemas informáticos comunes.</p>
+            <button onclick="location.href='https://coursera.org/verify/2482NBBE70VN'">Ver más</button>
+          </div>
+        </div>
+    
+        <!-- Curso 2: Soporte de Tecnologías de la Información de Google -->
+        <div class="course-card">
+          <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~NMWEG4SUFDJ1/CERTIFICATE_LANDING_PAGE~NMWEG4SUFDJ1.jpeg" alt="Soporte de Tecnologías de la Información de Google">
+          <div>
+            <h3>Soporte de Tecnologías de la Información de Google</h3>
+            <p>Aprende las habilidades necesarias para brindar soporte técnico en entornos de TI usando herramientas de Google.</p>
+            <button onclick="location.href='https://coursera.org/verify/professional-cert/NMWEG4SUFDJ1'">Ver más</button>
+          </div>
+        </div>
+    
+        <!-- Curso 3: Fundamentos de la ciberseguridad -->
+        <div class="course-card">
+          <img src="https://example.com/fundamentos-ciberseguridad.jpg" alt="Fundamentos de la ciberseguridad">
+          <div>
+            <h3>Fundamentos de la ciberseguridad</h3>
+            <p>Curso introductorio sobre los conceptos clave de la ciberseguridad, incluyendo las amenazas y las mejores prácticas para defenderse.</p>
+            <button onclick="location.href='https://www.example.com/fundamentos-ciberseguridad'">Ver más</button>
+          </div>
+        </div>
+    
+        <!-- Curso 4: Activos, amenazas y vulnerabilidades -->
+        <div class="course-card">
+          <img src="https://example.com/activos-amenazas-vulnerabilidades.jpg" alt="Activos, amenazas y vulnerabilidades">
+          <div>
+            <h3>Activos, amenazas y vulnerabilidades</h3>
+            <p>Curso sobre cómo identificar activos críticos, amenazas potenciales y vulnerabilidades en tu entorno de TI.</p>
+            <button onclick="location.href='https://www.example.com/activos-amenazas-vulnerabilidades'">Ver más</button>
+          </div>
+        </div>
+    
+        <!-- Curso 5: Ve a lo seguro: Gestiona los riesgos de seguridad -->
+        <div class="course-card">
+          <img src="https://example.com/gestiona-riesgos.jpg" alt="Gestiona los riesgos de seguridad">
+          <div>
+            <h3>Ve a lo seguro: Gestiona los riesgos de seguridad</h3>
+            <p>Curso sobre cómo gestionar los riesgos de seguridad y proteger tus sistemas contra posibles amenazas.</p>
+            <button onclick="location.href='https://www.example.com/gestiona-riesgos'">Ver más</button>
+          </div>
+        </div>
+    
+        <!-- Curso 6: Automatiza las tareas de ciberseguridad con Python -->
+        <div class="course-card">
+          <img src="https://example.com/automatiza-ciberseguridad.jpg" alt="Automatiza las tareas de ciberseguridad con Python">
+          <div>
+            <h3>Automatiza las tareas de ciberseguridad con Python</h3>
+            <p>Aprende a usar Python para automatizar tareas relacionadas con la ciberseguridad, como la gestión de vulnerabilidades.</p>
+            <button onclick="location.href='https://www.example.com/automatiza-python'">Ver más</button>
+          </div>
+        </div>
+    
+        <!-- Curso 7: Ponlo en práctica: Prepárate para los trabajos en ciberseguridad -->
+        <div class="course-card">
+          <img src="https://example.com/preparate-ciberseguridad.jpg" alt="Prepárate para los trabajos en ciberseguridad">
+          <div>
+            <h3>Ponlo en práctica: Prepárate para los trabajos en ciberseguridad</h3>
+            <p>Curso práctico que te ayuda a prepararte para conseguir un trabajo en ciberseguridad, cubriendo habilidades esenciales.</p>
+            <button onclick="location.href='https://www.example.com/preparate-ciberseguridad'">Ver más</button>
+          </div>
+        </div>
+    
+        <!-- Curso 8: Herramientas del oficio: Linux y SQL -->
+        <div class="course-card">
+          <img src="https://example.com/linux-sql.jpg" alt="Herramientas del oficio: Linux y SQL">
+          <div>
+            <h3>Herramientas del oficio: Linux y SQL</h3>
+            <p>Curso sobre cómo usar Linux y SQL para tareas de administración de sistemas y bases de datos en el ámbito de la ciberseguridad.</p>
+            <button onclick="location.href='https://www.example.com/linux-sql'">Ver más</button>
+          </div>
+        </div>
+    
+        <!-- Curso 9: Haz sonar la alarma: Detección y respuesta -->
+        <div class="course-card">
+          <img src="https://example.com/deteccion-respuesta.jpg" alt="Haz sonar la alarma: Detección y respuesta">
+          <div>
+            <h3>Haz sonar la alarma: Detección y respuesta</h3>
+            <p>Curso sobre cómo detectar y responder a incidentes de seguridad, minimizando el impacto de un ataque.</p>
+            <button onclick="location.href='https://www.example.com/deteccion-respuesta'">Ver más</button>
+          </div>
+        </div>
+    
+        <!-- Curso 10: Conexión y protección: Redes y seguridad de redes -->
+        <div class="course-card">
+          <img src="https://example.com/redes-seguridad.jpg" alt="Conexión y protección: Redes y seguridad de redes">
+          <div>
+            <h3>Conexión y protección: Redes y seguridad de redes</h3>
+            <p>Curso sobre los fundamentos de las redes informáticas y cómo protegerlas contra amenazas de seguridad.</p>
+            <button onclick="location.href='https://www.example.com/redes-seguridad'">Ver más</button>
+          </div>
+        </div>
+    
+        <!-- Curso 11: Ciberseguridad de Google -->
+        <div class="course-card">
+          <img src="https://example.com/ciberseguridad-google.jpg" alt="Ciberseguridad de Google">
+          <div>
+            <h3>Ciberseguridad de Google</h3>
+            <p>Curso oficial de Google sobre cómo proteger tus servicios y datos en la nube y otros entornos digitales.</p>
+            <button onclick="location.href='https://www.example.com/ciberseguridad-google'">Ver más</button>
+          </div>
+        </div>
+    
+      </div>
+    
+      <!-- Footer -->
+<footer>
+        <p> Daniel Mateo Romero Madrid | <a href="mailto:daniromema@gmail.com">daniromema@gmail.com</a></p>
+</footer>
+</body>
+</html>
