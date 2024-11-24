@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Rasa - Asistente Virtual Meteorológico</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .image-gallery img {
+      width: 500px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Estilos para el botón de volver al índice */
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-button:hover {
+      transform: scale(1.1);
+      background-color: #0056b3;
+    }
+
+    .back-button a {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botón Volver al índice -->
+  <a class="back-button" href="index.html">Volver al índice</a>
+
+  <!-- Header -->
+  <header>
+    <h1>Asistente Virtual Meteorológico con Rasa</h1>
+    <p>Mi proyecto de asistente virtual meteorológico utilizando GPT-2.</p>
+  </header>
+
+  <!-- Introducción al Proyecto -->
+  <section class="section">
+    <h2>¿Qué es Rasa?</h2>
+    <p>
+      Rasa es una herramienta poderosa que utilizamos para crear asistentes virtuales. En este proyecto, mi objetivo fue desarrollar un asistente capaz de dar información sobre el clima en tiempo real, utilizando una mezcla de procesamiento de lenguaje natural y técnicas de inteligencia artificial.
+    </p>
+    <p>
+      Gracias a Rasa, el asistente puede entender preguntas del usuario y dar respuestas precisas sobre el clima. Pero no solo eso, también hemos integrado otras herramientas que hacen que el asistente sea aún más útil y versátil.
+    </p>
+  </section>
+
+  <!-- GPT y su uso en el Proyecto -->
+  <section class="section">
+    <h2>Uso de GPT en el Proyecto</h2>
+    <p>
+      GPT (Generative Pretrained Transformer) es una inteligencia artificial generativa entrenada para generar texto coherente a partir de cualquier entrada dada. Aunque este modelo fue utilizado en el proyecto para responder preguntas sobre el clima, es importante destacar que GPT no está diseñado para predecir el clima de manera precisa como los modelos meteorológicos tradicionales.
+    </p>
+    <p>
+      A diferencia de los modelos de predicción meteorológica, que se entrenan específicamente con datos climáticos para hacer predicciones sobre el clima, GPT es un modelo generalista entrenado con grandes volúmenes de texto. Esto significa que GPT genera respuestas basadas en patrones de lenguaje, pero no puede hacer predicciones en tiempo real basadas en datos meteorológicos históricos o actuales.
+    </p>
+    <div class="image-gallery">
+      <img src="https://th.bing.com/th/id/R.d8935ae21b6e16fb7d2456c2b16b8af1?rik=cVeqf9QXtSmwHQ&riu=http%3a%2f%2fjalammar.github.io%2fimages%2fgpt2%2fgpt2-sizes-hyperparameters-3.png&ehk=COKxXOeclnFQujFQ19tRwOlrmzxpjvoiBQMhXjyc4pM%3d&risl=&pid=ImgRaw&r=0" alt="Ejemplo de interacción con GPT">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Proyecto realizado por Daniel Romero | <a href="mailto:daniromema@gmail.com">daniromema@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>

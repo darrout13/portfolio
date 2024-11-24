@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos - Daniel Romero</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      cursor: url('https://cdn.jsdelivr.net/gh/keenethics/cursor@2.0.0/img/animated-cursor.svg'), auto; /* Cursor animado */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Fondo y animaciones suaves */
+    body:hover {
+      background-color: #e0f7fa; /* Cambia el color de fondo al pasar el mouse */
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    header:hover {
+      background-color: #0056b3; /* Cambia el color al pasar el mouse */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      transition: transform 0.3s ease;
+    }
+
+    header:hover h1 {
+      transform: translateY(-5px);
+    }
+
+    /* Botón Volver al índice */
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-button:hover {
+      transform: scale(1.1);
+      background-color: #0056b3;
+    }
+
+    .back-button a {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Animaciones y transiciones */
+    .event-section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+      animation: fadeIn 2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .event-section h2 {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Espacio después del título de cada sección */
+    .event-section p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    /* Sección de certificados */
+    .certificates-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .certificates-gallery img {
+      width: 300px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .certificates-gallery img:hover {
+      transform: scale(2.05);
+    }
+
+    .photo-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .photo-gallery img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-gallery img:hover {
+      transform: scale(1.6);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    footer:hover {
+      opacity: 1;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Botón Volver al índice -->
+  <a class="back-button" href="index.html">Volver al índice</a>
+
+  <!-- Header -->
+  <header>
+    <h1>Eventos - Mi Participación</h1>
+  </header>
+  
+  <!-- Sección de Certificados -->
+  <div class="event-section">
+    <h2>Certificados</h2>
+    <p>
+    </p>
+    <div class="certificates-gallery">
+      <!-- Espacio para las imágenes de los certificados -->
+      <img src="images/evento1.png" alt="Certificado Evento Nacional">
+      <img src="images/evento2.png" alt="Certificado Evento Internacional">
+    </div>
+  </div>
+
+
+  <!-- Sección de eventos -->
+  <div class="event-section">
+    <h2>¿Qué son los semilleros?</h2>
+    <p>
+      Los semilleros de investigación son espacios académicos donde estudiantes desarrollan sus habilidades científicas
+      a través de proyectos innovadores. Tuve la oportunidad de participar en un semillero gracias a mi proyecto sobre
+      inteligencia artificial y sensores IoT. Este proyecto integraba sensores Arduino conectados a un ESP32, recopilando
+      datos de temperatura, humedad y calidad del aire para alimentar una base de datos y una inteligencia artificial.
+    </p>
+  </div>
+
+  <!-- Mi participación en eventos -->
+  <div class="event-section">
+    <h2>Mi participación en eventos</h2>
+    <p>
+      Mi proyecto fue presentado en varios eventos destacados:
+      <ul>
+        <li><strong>Evento Nacional:</strong> Universidad CUC en Barranquilla.</li>
+        <li><strong>Evento Internacional:</strong> Corporación Universitaria U de Colombia en Medellín.</li>
+      </ul>
+    </p>
+  </div>
+
+  <!-- Galería de fotos -->
+  <div class="event-section">
+    <h2>Galería de fotos</h2>
+    <h3>Evento Nacional - Universidad CUC</h3>
+    <div class="photo-gallery">
+      <!-- Espacio para las fotos del evento nacional -->
+      <img src="images/evidencia1.jpeg" alt="Foto del evento nacional">
+      <img src="images/evidencia2.jpeg" alt="Foto del evento nacional">
+    </div>
+
+    <h3>Evento Internacional - Medellín</h3>
+    <div class="photo-gallery">
+      <!-- Espacio para las fotos del evento internacional -->
+      <img src="images/evidencia3.jpeg" alt="Foto del evento internacional">
+      <img src="images/evidencia4.jpeg" alt="Foto del evento internacional">
+    </div>
+
+    <h3>Fotos del Proyecto de IA</h3>
+    <div class="photo-gallery">
+      <!-- Espacio para las fotos del proyecto -->
+      <img src="images/evidencia5.PNG" alt="Foto del proyecto de IA">
+      <img src="images/IA.PNG" alt="Foto del proyecto de IA">
+    </div>
+  </div>
+
+      <!-- Footer -->
+      <footer>
+        <p> Daniel Mateo Romero Madrid | <a href="mailto:daniromema@gmail.com">daniromema@gmail.com</a></p>
+</footer>
+</body>
+</html>

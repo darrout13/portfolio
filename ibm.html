@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniel Romero</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      cursor: url('https://cdn.jsdelivr.net/gh/keenethics/cursor@2.0.0/img/animated-cursor.svg'), auto; /* Cursor animado */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Fondo y animaciones suaves */
+    body:hover {
+      background-color: #e0f7fa; /* Cambia el color de fondo al pasar el mouse */
+    }
+
+    header {
+      background-color: #007bff;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    header:hover {
+      background-color: #0056b3; /* Cambia el color al pasar el mouse */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    header:hover h1 {
+      transform: translateY(-5px);
+    }
+
+    /* Contenedor principal de los cursos */
+    .courses-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 20px;
+      gap: 20px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .course-card {
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .course-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Ajustes para la imagen */
+    .course-card img,
+    .course-card iframe {
+      width: 500px; /* Aumentamos el tamaño de las imágenes */
+      height: auto;
+      border-radius: 10px;
+      margin-right: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .course-card:hover img {
+      transform: scale(1.1); /* Aumentamos la imagen al pasar el mouse */
+    }
+
+    /* Ajustes para el texto */
+    .course-card div {
+      flex: 1; /* Para que el texto ocupe el espacio restante */
+    }
+
+    .course-card h3 {
+      color: #007bff;
+      font-size: 2rem; /* Aumentamos el tamaño del texto */
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .course-card:hover h3 {
+      color: #0056b3; /* Cambia el color al pasar el mouse */
+    }
+
+    .course-card p {
+      font-size: 1.2rem; /* Aumentamos el tamaño del texto */
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .course-card button {
+      background-color: #007bff;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2rem; /* Aumentamos el tamaño del texto */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .course-card button:hover {
+      background-color: #0056b3;
+      transform: translateY(-3px); /* Efecto de elevación en el botón */
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    footer:hover {
+      opacity: 1;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Botón Volver al índice */
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      z-index: 1000;  /* Asegura que el botón esté por encima de otros elementos */
+    }
+
+    .back-button:hover {
+      transform: scale(1.1);
+      background-color: #0056b3;
+    }
+
+    .back-button a {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <a class="back-button" href="index.html">Volver al índice</a>
+
+  <header>
+    <h1>Cursos de ciencia de datos IBM</h1>
+  </header>
+
+  <div class="courses-container">
+    <!-- Cursos de IBM -->
+    <!-- Curso 1: Generative AI: Introduction and Applications -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~RIUUW4JFNZBN/CERTIFICATE_LANDING_PAGE~RIUUW4JFNZBN.jpeg" alt="Generative AI: Introduction and Applications">
+      <div>
+        <h3>Generative AI: Introduction and Applications</h3>
+        <p>Aprende los conceptos clave de la inteligencia artificial generativa y sus aplicaciones en la práctica.</p>
+        <button onclick="location.href='https://coursera.org/verify/RIUUW4JFNZBN'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 2: Generative AI: Prompt Engineering Basics -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~8UX47SSRM63U/CERTIFICATE_LANDING_PAGE~8UX47SSRM63U.jpeg" alt="Generative AI: Prompt Engineering Basics">
+      <div>
+        <h3>Generative AI: Prompt Engineering Basics</h3>
+        <p>Curso sobre cómo construir y optimizar prompts para trabajar con modelos de inteligencia artificial generativa.</p>
+        <button onclick="location.href='https://coursera.org/verify/8UX47SSRM63U'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 3: Generative AI: Elevate Your Data Science Career -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~S1P206611BVD/CERTIFICATE_LANDING_PAGE~S1P206611BVD.jpeg" alt="Generative AI: Elevate Your Data Science Career">
+      <div>
+        <h3>Generative AI: Elevate Your Data Science Career</h3>
+        <p>Curso para mejorar tus habilidades en ciencia de datos utilizando inteligencia artificial generativa.</p>
+        <button onclick="location.href='https://coursera.org/verify/S1P206611BVD'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 4: Programa especializado: Generative AI for Data Scientists -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~80QFI645VXNH/CERTIFICATE_LANDING_PAGE~80QFI645VXNH.jpeg" alt="Generative AI for Data Scientists">
+      <div>
+        <h3>Programa especializado: Generative AI for Data Scientists</h3>
+        <p>Un programa especializado para científicos de datos que deseen incorporar IA generativa en su trabajo.</p>
+        <button onclick="location.href='https://coursera.org/verify/specialization/80QFI645VXNH'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 5: Introduction to Artificial Intelligence (AI) -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~CCJZV2P2P3UG/CERTIFICATE_LANDING_PAGE~CCJZV2P2P3UG.jpeg" alt="Introduction to Artificial Intelligence (AI)">
+      <div>
+        <h3>Introduction to Artificial Intelligence (AI)</h3>
+        <p>Curso introductorio a la inteligencia artificial, ideal para quienes deseen aprender desde cero sobre el tema.</p>
+        <button onclick="location.href='https://coursera.org/verify/CCJZV2P2P3UG'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 6: Building AI Powered Chatbots Without Programming -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~D0222Q8PUYVZ/CERTIFICATE_LANDING_PAGE~D0222Q8PUYVZ.jpeg" alt="Building AI Powered Chatbots Without Programming">
+      <div>
+        <h3>Building AI Powered Chatbots Without Programming</h3>
+        <p>Curso sobre cómo crear chatbots impulsados por IA sin necesidad de saber programar.</p>
+        <button onclick="location.href='https://coursera.org/verify/D0222Q8PUYVZ'">Ver más</button>
+      </div>
+    </div>
+
+    <!-- Curso 7: Programa especializado: AI Foundations for Everyone -->
+    <div class="course-card">
+      <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~6WEARKJ07RK1/CERTIFICATE_LANDING_PAGE~6WEARKJ07RK1.jpeg" alt="AI Foundations for Everyone">
+      <div>
+        <h3>Programa especializado: AI Foundations for Everyone</h3>
+        <p>Un programa especializado para aprender las bases de la inteligencia artificial, adecuado para todos los niveles.</p>
+        <button onclick="location.href='https://coursera.org/verify/specialization/6WEARKJ07RK1'">Ver más</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p> Daniel Mateo Romero Madrid | <a href="mailto:daniromema@gmail.com">daniromema@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>

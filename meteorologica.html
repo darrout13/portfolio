@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Rasa - Asistente Virtual Meteorológico</title>
+  <style>
+    /* Estilos generales */
+/* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  transition: background-color 0.3s ease; /* Transición suave para el cambio de fondo */
+}
+
+/* Fondo y animaciones suaves */
+body:hover {
+  background-color: #e0f7fa; /* Cambia el color de fondo al pasar el mouse */
+}
+
+header {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header:hover {
+  background-color: #0056b3; /* Cambia el color al pasar el mouse */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  transition: transform 0.3s ease;
+}
+
+header:hover h1 {
+  transform: translateY(-5px); /* Efecto de subida suave al pasar el mouse */
+}
+
+/* Estilos de las secciones */
+.section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  animation: fadeIn 2s ease-out; /* Animación de aparición suave */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section h2 {
+  font-size: 2rem;
+  color: #007bff;
+  margin-bottom: 20px;
+  text-align: center;
+  transition: transform 0.3s ease; /* Efecto de animación en los títulos */
+}
+
+.section h2:hover {
+  transform: translateY(-5px); /* Efecto de subir el título al pasar el mouse */
+}
+
+.section p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: justify;
+  transition: color 0.3s ease; /* Cambio de color suave al pasar el mouse */
+}
+
+.section p:hover {
+  color: #007bff; /* Color azul al pasar el mouse */
+}
+
+/* Estilo de las imágenes de la galería */
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.image-gallery img {
+  width: 500px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para las imágenes */
+}
+
+.image-gallery img:hover {
+  transform: scale(1.05); /* Efecto de escala en las imágenes al pasar el mouse */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
+}
+
+/* Estilos del footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  opacity: 0.8;
+  transition: opacity 0.3s ease; /* Transición suave para el footer */
+}
+
+footer:hover {
+  opacity: 1; /* Aumenta la opacidad al pasar el mouse */
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Estilos para el botón de volver al índice */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.back-button:hover {
+  transform: scale(1.1); /* Efecto de escala al pasar el mouse */
+  background-color: #0056b3; /* Cambio de color al hacer hover */
+}
+
+.back-button a {
+  color: white;
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Botón Volver al índice -->
+  <a class="back-button" href="index.html">Volver al índice</a>
+
+  <!-- Header -->
+  <header>
+    <h1>Asistente Virtual Meteorológico con Rasa</h1>
+    <p>Mi proyecto de asistente virtual meteorológico utilizando Rasa y otras herramientas.</p>
+  </header>
+
+  <!-- Introducción al Proyecto -->
+  <section class="section">
+    <h2>¿Qué es Rasa?</h2>
+    <p>
+      Rasa es una herramienta poderosa que utilizamos para crear asistentes virtuales. En este proyecto, mi objetivo fue desarrollar un asistente capaz de dar información sobre el clima en tiempo real, utilizando una mezcla de procesamiento de lenguaje natural y técnicas de inteligencia artificial.
+    </p>
+    <p>
+      Gracias a Rasa, el asistente puede entender preguntas del usuario y dar respuestas precisas sobre el clima. Pero no solo eso, también hemos integrado otras herramientas que hacen que el asistente sea aún más útil y versátil.
+    </p>
+  </section>
+
+  <!-- NLU (Natural Language Understanding) -->
+  <section class="section">
+    <h2>¿Cómo entiende el asistente lo que dices?</h2>
+    <p>
+      Para que el asistente entienda lo que le dices, usamos un sistema de **procesamiento de lenguaje natural**. Este sistema es capaz de identificar lo que quieres saber, como por ejemplo si estás preguntando por el clima o por la temperatura en una ciudad específica.
+    </p>
+    <div class="image-gallery">
+      <img src="https://apptractor.ru/wp-content/uploads/2024/02/rasa.webp" alt="Ejemplo de interacción con el asistente">
+    </div>
+  </section>
+
+  <!-- El flujo de la conversación -->
+  <section class="section">
+    <h2>¿Cómo maneja el flujo de la conversación?</h2>
+    <p>
+      El asistente no solo entiende lo que dices, sino que también sabe cómo responder de manera adecuada. Usamos un sistema que gestiona el flujo de la conversación, asegurando que siempre te dé una respuesta relevante y coherente.
+    </p>
+    <div class="image-gallery">
+      <img src="https://cdn-images-1.medium.com/max/1600/1*k2Jaiqfx-HB_kTFEF9lPug.png" alt="Ejemplo de flujo de conversación">
+    </div>
+  </section>
+
+  <!-- Uso de acciones personalizadas -->
+  <section class="section">
+    <h2>Acciones Personalizadas</h2>
+    <p>
+      A veces el asistente necesita hacer algo más allá de simplemente responder preguntas. Por ejemplo, puede realizar predicciones meteorológicas basadas en datos o incluso convertir texto a voz. Para esto, usamos archivos de Python que le permiten al asistente realizar estas tareas externas.
+    </p>
+    <p>
+      Además, integramos herramientas de inteligencia artificial para permitir que el asistente convierta texto a voz y viceversa, creando una experiencia más fluida e interactiva.
+    </p>
+    <div class="image-gallery">
+      <img src="https://editor.analyticsvidhya.com/uploads/341305.png" alt="Ejemplo de acción personalizada">
+    </div>
+  </section>
+
+  <!-- Integración de voz -->
+  <section class="section">
+    <h2>Interacciones por Voz</h2>
+    <p>
+      Además de poder escribir, el asistente también permite interactuar por voz. Utilizamos inteligencia artificial preentrenada para convertir tu voz en texto y responder con voz, haciendo la experiencia más natural y cómoda.
+    </p>
+    <div class="image-gallery">
+      <img src="https://www.datocms-assets.com/96965/1686162236-2305-whisper-echo-announcement-blog.png" alt="Ejemplo de interacción por voz">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Proyecto realizado por Daniel Romero | <a href="mailto:daniromema@gmail.com">daniromema@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>
+
+

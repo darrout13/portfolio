@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto LLaMA 3.1 - Asistente IA Open-Source</title>
+  <style>
+    /* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  transition: background-color 0.3s ease; /* Transición suave para el cambio de fondo */
+}
+
+/* Fondo y animaciones suaves */
+body:hover {
+  background-color: #e0f7fa; /* Cambia el color de fondo al pasar el mouse */
+}
+
+header {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header:hover {
+  background-color: #0056b3; /* Cambia el color al pasar el mouse */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  transition: transform 0.3s ease;
+}
+
+header:hover h1 {
+  transform: translateY(-5px); /* Efecto de subida suave al pasar el mouse */
+}
+
+/* Estilos de las secciones */
+.section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  animation: fadeIn 2s ease-out; /* Animación de aparición suave */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section h2 {
+  font-size: 2rem;
+  color: #007bff;
+  margin-bottom: 20px;
+  text-align: center;
+  transition: transform 0.3s ease; /* Efecto de animación en los títulos */
+}
+
+.section h2:hover {
+  transform: translateY(-5px); /* Efecto de subir el título al pasar el mouse */
+}
+
+.section p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: justify;
+  transition: color 0.3s ease; /* Cambio de color suave al pasar el mouse */
+}
+
+.section p:hover {
+  color: #007bff; /* Color azul al pasar el mouse */
+}
+
+/* Estilo de las imágenes de la galería */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .image-gallery img {
+    max-width: 100%; /* Hace que la imagen ocupe el máximo de su contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: contain; /* Ajusta la imagen sin recortarla */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para las imágenes */
+  }
+
+  .image-gallery img:hover {
+    transform: scale(1.05); /* Efecto de escala en las imágenes al pasar el mouse */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
+  }
+
+/* Estilos del footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  opacity: 0.8;
+  transition: opacity 0.3s ease; /* Transición suave para el footer */
+}
+
+footer:hover {
+  opacity: 1; /* Aumenta la opacidad al pasar el mouse */
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Estilos para el botón de volver al índice */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.back-button:hover {
+  transform: scale(1.1); /* Efecto de escala al pasar el mouse */
+  background-color: #0056b3; /* Cambio de color al hacer hover */
+}
+
+.back-button a {
+  color: white;
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Botón Volver al índice -->
+  <a class="back-button" href="index.html">Volver al índice</a>
+
+  <!-- Header -->
+  <header>
+    <h1>LLaMA 3.1 - Asistente IA Open-Source</h1>
+    <p>Un asistente inteligente de código abierto, capaz de realizar proyectos interactivos y personalizados.</p>
+  </header>
+
+  <!-- Introducción al Proyecto -->
+  <section class="section">
+    <h2>¿Qué es LLaMA 3.1?</h2>
+    <p>
+      LLaMA (Large Language Model Meta AI) es un modelo de lenguaje de código abierto desarrollado por Meta. A diferencia de otros modelos como ChatGPT, LLaMA es completamente open-source, lo que permite una mayor personalización y flexibilidad. Aunque tiene una capacidad similar en términos de comprensión y generación de texto, su principal diferencia radica en que puede ser entrenado y ajustado por cualquier persona o empresa para adaptarse a necesidades específicas.
+    </p>
+    <p>
+      Esta versión 3.1 es una de las más potentes y avanzadas, ofreciendo una capacidad de procesamiento y generación de texto impresionante, aunque su consumo de recursos es mayor en comparación con otros modelos de lenguaje preentrenados.
+    </p>
+  </section>
+
+  <!-- Tecnologías utilizadas en LLaMA -->
+  <section class="section">
+    <h2>Tecnologías utilizadas en el proyecto</h2>
+    <p>
+      Para entrenar y ajustar LLaMA a necesidades específicas, se utilizaron varias tecnologías avanzadas:
+    </p>
+    <ul>
+      <li><strong>LangChain:</strong> Utilizado para realizar *streaming* de datos y generación de texto en tiempo real, permitiendo una respuesta rápida y eficiente a las consultas del usuario.</li>
+      <li><strong>SQL Connect:</strong> Para integrar LLaMA con bases de datos y realizar consultas de información específica, lo que facilita la búsqueda de datos en tiempo real.</li>
+      <li><strong>Fine-Tuning:</strong> Este proceso permite ajustar el modelo de LLaMA para que sea más preciso y relevante en tareas específicas, como acceder a páginas web o interactuar con información de fuentes específicas.</li>
+    </ul>
+  </section>
+
+  <!-- Diferencias entre LLaMA y ChatGPT -->
+  <section class="section">
+    <h2>Diferencias clave entre LLaMA y ChatGPT</h2>
+    <p>
+      Aunque ambos modelos de IA están diseñados para generar texto y comprender consultas, hay diferencias clave:
+    </p>
+    <ul>
+      <li><strong>Open-Source:</strong> A diferencia de ChatGPT, LLaMA es completamente de código abierto, lo que permite que los desarrolladores ajusten y entren el modelo según sus necesidades.</li>
+      <li><strong>Consumo de recursos:</strong> Aunque LLaMA es más potente que chatgpt en sus modelos open source, su entrenamiento y ejecución requieren mayores recursos computacionales, lo que puede hacer que el modelo sea más costoso de utilizar en comparación con ChatGPT.</li>
+      <li><strong>Capacidades de personalización:</strong> LLaMA permite un nivel más alto de personalización gracias al proceso de Fine-Tuning y su integración con herramientas como LangChain y SQL Connect, lo que le permite acceder a información externa o interactuar con bases de datos y fuentes web.</li>
+    </ul>
+  </section>
+
+  <!-- Imagen del proyecto LLaMA -->
+  <section class="section">
+    <h2>Imagen del Proyecto LLaMA</h2>
+        <li><strong>No se puede mostrar codigo completo ya que son varias lineas pero aqui se ven las biliotecas las cuales nos ayudaron.</li>
+    <div class="image-gallery">
+      <img src="images/llama3.png" alt="Imagen de LLaMA 3.1">
+ 
+    </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Proyecto realizado por Daniel Romero | <a href="mailto:daniromema@gmail.com">daniromema@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>

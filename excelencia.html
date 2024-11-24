@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beca por Excelencia - Daniel Romero</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      cursor: url('https://cdn.jsdelivr.net/gh/keenethics/cursor@2.0.0/img/animated-cursor.svg'), auto; /* Cursor animado */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Fondo y animaciones suaves */
+    body:hover {
+      background-color: #e0f7fa; /* Cambia el color de fondo al pasar el mouse */
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    header:hover {
+      background-color: #0056b3; /* Cambia el color al pasar el mouse */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      transition: transform 0.3s ease;
+    }
+
+    header:hover h1 {
+      transform: translateY(-5px);
+    }
+
+    /* Botón Volver al índice */
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-button:hover {
+      transform: scale(1.1);
+      background-color: #0056b3;
+    }
+
+    .back-button a {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Animaciones y transiciones */
+    .event-section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+      animation: fadeIn 2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .event-section h2 {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Espacio después del título de cada sección */
+    .event-section p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    /* Sección de certificados */
+    .certificates-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .certificates-gallery img {
+      width: 700px;
+      height: 400;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .certificates-gallery img:hover {
+      transform: scale(2.05);
+    }
+
+    .photo-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .photo-gallery img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-gallery img:hover {
+      transform: scale(2.6);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    footer:hover {
+      opacity: 1;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Botón Volver al índice -->
+  <a class="back-button" href="index.html">Volver al índice</a>
+
+  <!-- Header -->
+  <header>
+    <h1>Beca por Excelencia</h1>
+    <p>Reconocimiento a mi esfuerzo académico en el segundo cuatrimestre de 2024</p>
+  </header>
+
+  <!-- Sección de Introducción -->
+  <section class="event-section">
+    <h2>¿Qué es la Beca por Excelencia?</h2>
+    <p>
+      La Beca por Excelencia es un premio otorgado a los estudiantes que han demostrado un rendimiento académico sobresaliente.
+      Esta beca se concede a aquellos que obtienen el mayor promedio ponderado dentro de su programa académico, y tiene como objetivo reconocer el esfuerzo, la dedicación y el compromiso con los estudios.
+    </p>
+    <p>
+      En mi caso, fue un honor recibirla en el segundo cuatrimestre del año 2024, gracias a mi rendimiento académico destacado. Este tipo de reconocimiento no solo refleja el esfuerzo de los estudiantes, sino también el compromiso con la excelencia y la búsqueda constante de mejora.
+    </p>
+  </section>
+
+  <!-- Sección de Cómo Me Ayuda -->
+  <section class="event-section">
+    <h2>¿Cómo me ayuda esta Beca?</h2>
+    <p>
+      Esta beca me ha brindado una oportunidad increíble para seguir concentrándome en mi desarrollo académico sin la carga financiera de la matrícula. Poder recibir este estímulo me permite continuar con mis estudios de manera más tranquila, sabiendo que la institución valora mi esfuerzo y me apoya en mi camino hacia la graduación.
+    </p>
+    <p>
+      Además, esta beca es un gran impulso para mi motivación personal, ya que me demuestra que el trabajo duro y la dedicación tienen su recompensa. Esto me impulsa a seguir buscando la excelencia en todos mis proyectos académicos.
+    </p>
+  </section>
+
+  <!-- Sección de Evidencia -->
+  <section class="event-section">
+    <h2>Evidencia de la Beca</h2>
+    <p>
+      A continuación se muestra el certificado que respalda la obtención de la Beca por Excelencia, como reconocimiento a mi desempeño académico en el segundo cuatrimestre de 2024.
+      También puedes <a href="https://www.unibarranquilla.edu.co/docs/resolucion-de-mejores-promedios-2024-2.pdf" target="_blank">ver la resolución oficial aquí</a> para verificar la autenticidad del premio.
+    </p>
+    <div class="certificates-gallery">
+      <img src="images/beca.PNG" alt="Certificado Beca por Excelencia">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p> Daniel Mateo Romero Madrid | <a href="mailto:daniromema@gmail.com">daniromema@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>

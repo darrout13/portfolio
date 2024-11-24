@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfil Técnico Profesional</title>
+  <title>Portafolio</title>
   <style>
     /* Configuración general */
     body {
@@ -207,7 +207,7 @@
 <body>
   <!-- Encabezado -->
   <header>
-    <h1>Tecnico Laboral y profesional en mantenimiento de redes de telecomunicaciones</h1>
+    <h1>Tecnico Laboral y Profesional en Mantenimiento de Redes de Telecomunicaciones</h1>
     <nav>
       <a href="#presentacion">Inicio</a>
       <a href="#certificados">Certificados</a>
@@ -220,26 +220,93 @@
     <div class="hero-text">
       <h2>Daniel Mateo Romero Madrid</h2>
       <p>
-        Soy un técnico profesional en redes con experiencia en diseño e implementación de infraestructura de red, seguridad y soluciones basadas en la nube. Mi objetivo es ofrecer soluciones innovadoras y optimizadas para garantizar la conectividad y seguridad de cualquier sistema.
+        Soy Técnico Laboral en Redes de Telecomunicaciones. Culminé académicamente la formación de Técnico Profesional en Redes de Telecomunicaciones de la IUB (UNIBARRANQUILLA), formo parte del Semillero de Investigación en Aplicaciones Telemáticas de está misma Universidad. He sido ponente en varios eventos a nivel nacional e internacional. Con conocimientos en nuevas tecnologías, como la implementación de infraestructura de red, seguridad, soluciones basadas en la nube, inteligencia artificial, tanto generativa como de lenguaje natural (LLM). Mi objetivo es ofrecer soluciones innovadoras y optimizadas para garantizar y automatizar la conectividad y seguridad de cualquier sistema. Responsable y proactivo con capacidad para trabajar en equipo.
       </p>
       <button>Contáctame</button>
     </div>
+    
     <div class="hero-image">
       <img src="https://upload-pro-heyuan-fashionphoto.oss-accelerate.aliyuncs.com/hairstyle/b201f52a73b9cdba6ae7a9858ebf546b.png" alt="Tu foto">
     </div>
   </section>
+<!-- Sección de Formación Académica -->
+<!-- Sección de Formación Académica -->
+<!-- Sección de Formación Académica -->
+<section class="education" id="formacion">
+  <h3 style="text-align: center; color: #007bff; font-size: 2rem; margin-bottom: 30px;">Formación Académica</h3>
+  <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px; padding: 0 20px;">
+    <!-- Certificado Bachiller -->
+    <div class="education-card" style="text-align: center;">
+      <h4 style="color: #007bff; font-size: 1.5rem;">Bachiller</h4>
+      <p style="font-size: 1rem; color: #555;">Certificado de educación secundaria.</p>
+      <img src="images/bachiller.PNG" alt="Certificado Bachiller" style="width: 250px; height: auto; border-radius: 10px; margin-bottom: 10px;">
+      <button style="margin: 10px auto; display: block; padding: 10px 20px; font-size: 1rem; color: white; background-color: #007bff; border: none; border-radius: 5px; cursor: pointer;"
+        onclick="showLargeCertificate('images/bachiller.PNG', 'Certificado Bachiller')">Ampliar</button>
+    </div>
+
+    <!-- Certificado Pregrado -->
+    <div class="education-card" style="text-align: center;">
+      <h4 style="color: #007bff; font-size: 1.5rem;">Tecnico</h4>
+      <p style="font-size: 1rem; color: #555;">Título Tecnico en Redes de Telecomunicaciones.</p>
+      <img src="images/tecnico.PNG" alt="Certificado Pregrado" style="width: 250px; height: auto; border-radius: 10px; margin-bottom: 10px;">
+      <button style="margin: 10px auto; display: block; padding: 10px 20px; font-size: 1rem; color: white; background-color: #007bff; border: none; border-radius: 5px; cursor: pointer;"
+        onclick="showLargeCertificate('images/tecnico.PNG', 'Certificado Pregrado')">Ampliar</button>
+    </div>
+
+    <!-- Certificado Inglés -->
+    <div class="education-card" style="text-align: center;">
+      <h4 style="color: #007bff; font-size: 1.5rem;">Inglés</h4>
+      <p style="font-size: 1rem; color: #555;">Certificación de dominio del idioma inglés.</p>
+      <img src="images/certificado.PNG" alt="Certificado Inglés" style="width: 250px; height: auto; border-radius: 10px; margin-bottom: 10px;">
+      <button style="margin: 10px auto; display: block; padding: 10px 20px; font-size: 1rem; color: white; background-color: #007bff; border: none; border-radius: 5px; cursor: pointer;"
+        onclick="showLargeCertificate('images/certificado.PNG', 'Certificado Inglés')">Ampliar</button>
+    </div>
+  </div>
+
+  <!-- Modal para ampliar certificado -->
+  <div id="largeCertificateModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000; justify-content: center; align-items: center;">
+    <div style="background-color: white; padding: 20px; border-radius: 10px; text-align: center; max-width: 500px; width: 90%;">
+      <h4 id="certificateTitle" style="color: #007bff; margin-bottom: 20px;"></h4>
+      <img id="certificateImage" src="https://via.placeholder.com/400x200" alt="Certificado ampliado" style="border-radius: 10px; max-width: 100%; height: auto; margin-bottom: 20px;">
+      <button style="margin: 0 auto; padding: 10px 20px; font-size: 1rem; color: white; background-color: #007bff; border: none; border-radius: 5px; cursor: pointer;"
+        onclick="closeLargeCertificate()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    function showLargeCertificate(imageSrc, title) {
+      const modal = document.getElementById('largeCertificateModal');
+      const titleElement = document.getElementById('certificateTitle');
+      const imageElement = document.getElementById('certificateImage');
+      
+      titleElement.textContent = title;
+      imageElement.src = imageSrc;
+      
+      modal.style.display = 'flex';
+    }
+
+    function closeLargeCertificate() {
+      const modal = document.getElementById('largeCertificateModal');
+      modal.style.display = 'none';
+    }
+  </script>
+
+</section>
+
+
+</section>
 
   <!-- Sección de Certificados y Empresas -->
   <section class="certificates" id="certificados">
-    <h3>Certificados y Proyectos</h3>
+    <h3>Certificados de cursos completados</h3>
     <div class="carousel-container">
       <button class="carousel-button left" onclick="moveCarousel(-1)" id="prevButton">&#9664;</button>
       <div class="carousel-track">
         <!-- Certificados -->
         <div class="carousel-item">
           <div class="certificate-card">
-            <h4>Cisco CCNA</h4>
-            <p>Certificado en redes avanzadas y configuración de equipos Cisco.</p>
+            <h4>Cisco</h4>
+            <p>Certificados en redes avanzadas para configurazion y automatización de equipos Cisco.</p>
             <button onclick="location.href='cisco.html'">Ver más</button>
           </div>
         </div>
@@ -248,6 +315,13 @@
             <h4>Google</h4>
             <p>Certificación en ciberseguridad y gestión de amenazas.</p>
             <button onclick="location.href='Google.html'">Ver más</button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="company-card">
+            <h4>IBM</h4>
+            <p>Cursos especializados en la automatizacion de inteligencia artificial y ciencias de datos.</p>
+            <button onclick="location.href='ibm.html'">Ver más</button>
           </div>
         </div>
         <!-- Empresas -->
@@ -260,15 +334,8 @@
         </div>
         <div class="carousel-item">
           <div class="company-card">
-            <h4>IBM</h4>
-            <p>Liderazgo en tecnologías de red empresarial.</p>
-            <button onclick="location.href='ibm.html'">Ver más</button>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="company-card">
             <h4>Universidad de California</h4>
-            <p>Formación avanzada en redes y ciberseguridad.</p>
+            <p>Formación avanzada en toma de desiciones.</p>
             <button onclick="location.href='ucalifornia.html'">Ver más</button>
           </div>
         </div>
@@ -276,10 +343,168 @@
       <button class="carousel-button right" onclick="moveCarousel(1)" id="nextButton">&#9654;</button>
     </div>
   </section>
+<!-- Sección de Proyectos y Logros -->
+<section class="portfolio" id="proyectos-logros">
+  <h3>Proyectos y Logros</h3>
+  <div class="portfolio-grid">
+    <!-- Proyecto 1 -->
+    <a href="eventos.html" class="portfolio-item">
+      <div class="portfolio-image" style="background-image: url('images/evento1.png');">
+        <div class="overlay">
+          <p>Participación en eventos nacionales e internacionales representando a mi institución.</p>
+        </div>
+      </div>
+      <h4>Eventos Nacionales e Internacionales</h4>
+    </a>
+    <!-- Proyecto 2 -->
+    <a href="excelencia.html" class="portfolio-item">
+      <div class="portfolio-image" style="background-image: url('https://play-lh.googleusercontent.com/csM83gu4nQ8cWcVFEjdiG-ATA2Ft8_X_6o7c0xKX8jktuT_YRh8bJOJrN4N5aHHMaaY');">
+        <div class="overlay">
+          <p>Reconocimiento académico por desempeño sobresaliente.</p>
+        </div>
+      </div>
+      <h4>Beca por Excelencia</h4>
+    </a>
+    <!-- Proyecto 3 -->
+    <a href="meteorologica.html" class="portfolio-item">
+      <div class="portfolio-image" style="background-image: url('https://rasa.community/static/facebook-og-dc4e1962b0a58c63cd387fcea00d2225.png');">
+        <div class="overlay">
+          <p>Desarrollo de un sistema IA para predicción meteorológica con Rasa.</p>
+        </div>
+      </div>
+      <h4>Proyecto IA Meteorológica</h4>
+    </a>
+    <!-- Proyecto 4 -->
+    <a href="gpt2.html" class="portfolio-item">
+      <div class="portfolio-image" style="background-image: url('https://storage.googleapis.com/wandb-production.appspot.com/wandb-public-images/tk8kfl2kbl.png');">
+        <div class="overlay">
+          <p>Aplicación de GPT-2 para generación de texto creativo.</p>
+        </div>
+      </div>
+      <h4>Proyecto con GPT-2</h4>
+    </a>
+    <!-- Proyecto 5 -->
+    <a href="matematica.html" class="portfolio-item">
+      <div class="portfolio-image" style="background-image: url('https://theinventorhouse.org/wp-content/uploads/2022/03/curso-python-jovenes.png');">
+        <div class="overlay">
+          <p>Página interactiva para resolver problemas matemáticos dinámicamente.</p>
+        </div>
+      </div>
+      <h4>Página de Ejercicios Matemáticos</h4>
+    </a>
+    <!-- Proyecto 6 -->
+    <a href="llama3.html" class="portfolio-item">
+      <div class="portfolio-image" style="background-image: url('https://opendatascience.com/wp-content/uploads/2023/02/Untitled-design-1-2.png');">
+        <div class="overlay">
+          <p>Optimización y fine-tuning de Llama 3.1 para tareas específicas.</p>
+        </div>
+      </div>
+      <h4>Machine Learning con Llama 3.1</h4>
+    </a>
+  </div>
+</section>
+
+<style>
+  .portfolio {
+    padding: 40px 20px;
+    background-color: #f4f4f4; /* Fondo gris claro */
+    color: #333333; /* Texto en gris oscuro */
+    text-align: center;
+  }
+
+  .portfolio h3 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #007bff; /* Azul principal de la página */
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+  .portfolio-item {
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+  text-align: center;
+  background-color: #ffffff; /* Fondo blanco para cada item */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block; /* Asegura que el enlace cubra toda el área del proyecto */
+  text-decoration: none; /* Quita el subrayado */
+}
+
+  .portfolio-item:hover {
+  transform: scale(1.05); /* Efecto al pasar el mouse */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Más sombra al hacer hover */
+}
+
+  .portfolio-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .portfolio-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1rem;
+    text-align: center;
+    padding: 10px;
+    transition: opacity 0.3s ease;
+  }
+
+  .portfolio-image:hover .overlay {
+    opacity: 1;
+  }
+
+  .portfolio-item h4 {
+  margin-top: 15px;
+  font-size: 1.3rem;
+  color: #007bff; /* Azul para los títulos */
+  text-decoration: none; /* Asegura que el texto del título no tenga subrayado */
+}
+
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .portfolio-grid {
+      grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+    }
+  }
+</style>
 
   <!-- Footer -->
   <footer id="contacto">
-    <p>Desarrollado por Daniel Mateo Romero Madrid | <a href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a></p>
+    <p>Desarrollado por Daniel Mateo Romero Madrid | <a href="mailto:daniromema@gmail.com">daniromema@gmail.com</a></p>
   </footer>
 
   <script>
