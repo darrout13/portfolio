@@ -3,643 +3,1291 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio</title>
+  <title>Daniel Romero | Portafolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    /* Configuración general */
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f5f5;https://darrout13.github.io/portfolio/
-      color: #333;
+    :root {
+      --primary: #00d4ff;
+      --secondary: #7b2ff7;
+      --accent: #ff3cac;
+      --dark: #0a0a1a;
+      --darker: #05050f;
+      --card-bg: rgba(255,255,255,0.04);
+      --card-border: rgba(0,212,255,0.18);
+      --text: #e0eaff;
+      --text-muted: #7a8aaa;
+      --glow: 0 0 24px rgba(0,212,255,0.4);
+      --glow2: 0 0 24px rgba(123,47,247,0.4);
     }
-    /* Estilo del modal */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
 
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 400px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
+    /* RESET & BASE */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.modal-content h3 {
-  color: #007bff;
-  margin-bottom: 20px;
-}
+    html { scroll-behavior: smooth; }
 
-.social-links {
-  display: flex;
-  justify-content: space-around;
-}
+    body {
+      font-family: 'Exo 2', sans-serif;
+      background-color: var(--dark);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-.social-links a {
-  text-decoration: none;
-  font-size: 1.5rem;
-  color: #333;
-  transition: color 0.3s ease;
-}
+    /* ANIMATED BACKGROUND */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0,212,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(123,47,247,0.1) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 60% 30%, rgba(255,60,172,0.05) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+      animation: bgShift 12s ease-in-out infinite alternate;
+    }
 
-.social-links a:hover {
-  color: #007bff;
-}
+    @keyframes bgShift {
+      0%   { opacity: 1; transform: scale(1); }
+      100% { opacity: 0.7; transform: scale(1.05); }
+    }
 
-.social-links img {
-  width: 50px;
-  height: auto;
-}
+    /* PARTICLES */
+    #particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatParticle linear infinite;
+    }
+    @keyframes floatParticle {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
 
-.close-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  color: white;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--darker); }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--primary), var(--secondary)); border-radius: 3px; }
 
-.close-btn:hover {
-  background-color: #0056b3;
-}
-
-    
-
-    /* Encabezado */
+    /* HEADER */
     header {
-      background-color: #ffffff;
-      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,26,0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 14px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      animation: slideDown 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
     }
 
     header h1 {
-      font-size: 1.5rem;
-      color: #222;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--primary);
+      text-shadow: 0 0 18px rgba(0,212,255,0.5);
+      max-width: 500px;
+      line-height: 1.4;
     }
 
+    nav { display: flex; gap: 6px; }
     nav a {
-      margin: 0 15px;
+      padding: 8px 18px;
       text-decoration: none;
-      color: #666;
-      font-weight: bold;
-      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      border-radius: 50px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
-
+    nav a::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: inherit;
+    }
+    nav a:hover::before { opacity: 0.15; }
     nav a:hover {
-      color: #007bff;
+      color: var(--primary);
+      border-color: var(--card-border);
+      box-shadow: var(--glow);
     }
 
-    /* Sección principal */
+    /* HERO */
     .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 90vh;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
-      padding: 50px 20px;
-      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      gap: 60px;
+      padding: 80px 60px;
+      flex-wrap: wrap;
     }
 
     .hero-text {
-      max-width: 500px;
+      max-width: 540px;
+      animation: fadeInLeft 0.9s 0.3s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes fadeInLeft {
+      from { transform: translateX(-60px); opacity: 0; }
+      to   { transform: translateX(0); opacity: 1; }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(123,47,247,0.15));
+      border: 1px solid rgba(0,212,255,0.3);
+      border-radius: 50px;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--primary);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(0,212,255,0.3); }
+      50%      { box-shadow: 0 0 0 8px rgba(0,212,255,0); }
     }
 
     .hero-text h2 {
-      font-size: 2.5rem;
-      color: #007bff;
-      margin-bottom: 20px;
+      font-family: 'Orbitron', monospace;
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #ffffff 0%, var(--primary) 50%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 22px;
+      filter: drop-shadow(0 0 20px rgba(0,212,255,0.3));
     }
 
     .hero-text p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      color: #555;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+      margin-bottom: 30px;
     }
 
-    .hero-text button {
-      margin-top: 20px;
-      padding: 10px 20px;
+    .hero-text p span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
       font-size: 1rem;
-      color: white;
-      background-color: #007bff;
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--dark);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       border: none;
-      border-radius: 5px;
+      border-radius: 50px;
       cursor: pointer;
+      box-shadow: 0 4px 30px rgba(0,212,255,0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .cta-btn:hover::before { opacity: 1; }
+    .cta-btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 40px rgba(0,212,255,0.6); }
+    .cta-btn span { position: relative; z-index: 1; }
+
+    .hero-image {
+      animation: fadeInRight 0.9s 0.5s cubic-bezier(0.22,1,0.36,1) both;
+      position: relative;
+    }
+    @keyframes fadeInRight {
+      from { transform: translateX(60px); opacity: 0; }
+      to   { transform: translateX(0); opacity: 1; }
     }
 
-    .hero-text button:hover {
-      background-color: #0056b3;
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 20px;
+      background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+      z-index: -1;
+      animation: rotateBorder 4s linear infinite;
+      filter: blur(2px);
+    }
+    @keyframes rotateBorder {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
     }
 
     .hero-image img {
       width: 300px;
+      height: 300px;
+      object-fit: cover;
       border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      display: block;
+      position: relative;
+      z-index: 1;
+      filter: saturate(1.1);
     }
 
-    /* Certificados y proyectos */
-    .certificates {
-      padding: 40px 20px;
-      background-color: #ffffff;
+    .hero-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 30px;
+      flex-wrap: wrap;
     }
-
-    .certificates h3 {
+    .stat-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 14px 20px;
       text-align: center;
-      color: #007bff;
+      min-width: 90px;
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.7s ease both;
+    }
+    .stat-box:hover {
+      background: rgba(0,212,255,0.08);
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+    }
+    .stat-num {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--primary);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* SECTION STYLES */
+    section {
+      position: relative;
+      z-index: 1;
+    }
+    .section-title {
+      text-align: center;
+      font-family: 'Orbitron', monospace;
       font-size: 2rem;
-      margin-bottom: 30px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      margin: 12px auto 0;
+      border-radius: 2px;
+      animation: expandLine 1s ease both;
+    }
+    @keyframes expandLine {
+      from { width: 0; }
+      to   { width: 60px; }
+    }
+
+    /* EDUCATION SECTION */
+    .education {
+      padding: 80px 40px;
+      background: linear-gradient(180deg, var(--darker) 0%, rgba(0,212,255,0.02) 50%, var(--darker) 100%);
+    }
+
+    .education-grid {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .education-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      width: 260px;
+      transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+    .education-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent 350deg, var(--primary) 360deg);
+      animation: cardBorderSpin 6s linear infinite;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .education-card:hover::before { opacity: 1; }
+    @keyframes cardBorderSpin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .education-card::after {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      background: var(--darker);
+      border-radius: 19px;
+      z-index: 0;
+    }
+    .education-card > * { position: relative; z-index: 1; }
+
+    .education-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--glow), 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .education-card h4 {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .education-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .education-card img {
+      width: 100%;
+      max-width: 220px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      border: 1px solid var(--card-border);
+      transition: all 0.3s ease;
+    }
+    .education-card:hover img { filter: brightness(1.1) saturate(1.2); }
+
+    /* BUTTONS */
+    .btn-glow {
+      display: inline-block;
+      padding: 10px 22px;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--primary);
+      background: transparent;
+      border: 1px solid var(--primary);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+    .btn-glow:hover {
+      background: var(--primary);
+      color: var(--dark);
+      box-shadow: var(--glow);
+      transform: translateY(-2px);
+    }
+
+    /* CERTIFICATES CAROUSEL */
+    .certificates {
+      padding: 80px 40px;
+      background: var(--dark);
     }
 
     .carousel-container {
       position: relative;
       overflow: hidden;
       width: 100%;
+      border-radius: 20px;
     }
 
     .carousel-track {
       display: flex;
-      transition: transform 0.5s ease-in-out;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .carousel-item {
-      flex: 0 0 33%; /* Ahora tres elementos */
+      flex: 0 0 33.333%;
       box-sizing: border-box;
-      padding: 10px;
-      text-align: center;
+      padding: 12px;
     }
 
     .certificate-card, .company-card {
-      padding: 20px;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 30px 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .certificate-card::before, .company-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .certificate-card:hover::before, .company-card:hover::before { transform: scaleX(1); }
+
+    .certificate-card:hover, .company-card:hover {
+      transform: translateY(-8px);
+      background: rgba(0,212,255,0.06);
+      border-color: rgba(0,212,255,0.4);
+      box-shadow: var(--glow), 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .cert-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 18px;
+      background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(123,47,247,0.2));
+      border: 1px solid rgba(0,212,255,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      animation: iconFloat 3s ease-in-out infinite;
+    }
+    @keyframes iconFloat {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-5px); }
     }
 
     .certificate-card h4, .company-card h4 {
-      color: #007bff;
-      font-size: 1.2rem;
+      font-family: 'Orbitron', monospace;
+      font-size: 1.1rem;
+      color: var(--primary);
       margin-bottom: 10px;
     }
-
     .certificate-card p, .company-card p {
-      font-size: 0.9rem;
-      color: #555;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
     }
 
-    /* Estilo de las flechas */
     .carousel-button {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.6);
-      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--dark);
       border: none;
-      padding: 12px;
+      width: 44px;
+      height: 44px;
       cursor: pointer;
       border-radius: 50%;
-      font-size: 1.8rem;
+      font-size: 1.1rem;
       z-index: 10;
-      transition: background-color 0.3s, transform 0.2s ease;
+      transition: all 0.3s ease;
+      box-shadow: var(--glow);
+      font-weight: bold;
     }
+    .carousel-button.left { left: 8px; }
+    .carousel-button.right { right: 8px; }
+    .carousel-button:hover { transform: translateY(-50%) scale(1.15); box-shadow: 0 0 30px rgba(0,212,255,0.7); }
+    .carousel-button:disabled { opacity: 0.3; cursor: not-allowed; }
 
-    .carousel-button.left {
-      left: 10px;
+    /* PROJECTS */
+    .portfolio {
+      padding: 80px 40px;
+      background: linear-gradient(180deg, var(--dark) 0%, rgba(123,47,247,0.04) 50%, var(--dark) 100%);
     }
-
-    .carousel-button.right {
-      right: 10px;
-    }
-
-    .carousel-button:hover {
-      background-color: #007bff;
-      transform: scale(1.2);
-    }
-
-    .carousel-button:focus {
-      outline: none;
-    }
-
-    /* Botón Ver más */
-    .certificate-card button, .company-card button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      color: white;
-      background-color: #007bff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .certificate-card button:hover, .company-card button:hover {
-      background-color: #0056b3;
-    }
-
-    /* Footer */
-    footer {
-      padding: 20px;
-      background-color: #333;
-      color: white;
+    .portfolio h3 {
       text-align: center;
+      font-family: 'Orbitron', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 40px;
+    }
+    .portfolio h3::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      margin: 12px auto 0;
+      border-radius: 2px;
     }
 
-    footer a {
-      color: #007bff;
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      justify-items: center;
+    }
+
+    .portfolio-item {
+      width: 100%;
+      max-width: 320px;
+      position: relative;
+      text-align: center;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+      display: block;
       text-decoration: none;
+      backdrop-filter: blur(8px);
+    }
+    .portfolio-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, var(--primary), var(--accent)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .portfolio-item:hover::after { opacity: 1; }
+    .portfolio-item:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: var(--glow2), 0 24px 60px rgba(0,0,0,0.5);
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .portfolio-image {
+      width: 100%;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
     }
-    
+    .portfolio-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, var(--darker) 100%);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, rgba(0,212,255,0.85), rgba(123,47,247,0.85));
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.92rem;
+      text-align: center;
+      padding: 14px;
+      transition: opacity 0.4s ease;
+      z-index: 2;
+    }
+    .portfolio-image:hover .overlay { opacity: 1; }
+
+    .portfolio-item h4 {
+      margin: 16px 14px 18px;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.95rem;
+      color: var(--primary);
+      letter-spacing: 0.04em;
+    }
+
+    /* SKILLS TICKER */
+    .skills-ticker {
+      padding: 20px 0;
+      background: linear-gradient(90deg, var(--darker), rgba(0,212,255,0.05), var(--darker));
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    .ticker-inner {
+      display: flex;
+      gap: 40px;
+      animation: tickerScroll 30s linear infinite;
+      width: max-content;
+    }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      padding: 6px 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 50px;
+    }
+    .ticker-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+      flex-shrink: 0;
+    }
+
+    /* MODALS */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal-content {
+      background: linear-gradient(135deg, rgba(10,10,26,0.98), rgba(15,15,35,0.98));
+      border: 1px solid var(--card-border);
+      padding: 40px 36px;
+      border-radius: 24px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: var(--glow), var(--glow2), 0 40px 80px rgba(0,0,0,0.6);
+      animation: modalSlideIn 0.4s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes modalSlideIn {
+      from { transform: translateY(40px) scale(0.95); opacity: 0; }
+      to   { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .modal-content h3 {
+      font-family: 'Orbitron', monospace;
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 28px;
+      letter-spacing: 0.06em;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: space-around;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .social-links a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      transition: all 0.3s ease;
+      flex: 1;
+    }
+    .social-links a:hover {
+      background: rgba(0,212,255,0.1);
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+    }
+    .social-links img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .close-btn {
+      margin-top: 24px;
+      padding: 12px 28px;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--dark);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--glow);
+    }
+    .close-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0,212,255,0.6);
+    }
+
+    /* LARGE CERT MODAL */
+    #largeCertificateModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .large-cert-content {
+      background: linear-gradient(135deg, rgba(10,10,26,0.98), rgba(15,15,35,0.98));
+      border: 1px solid var(--card-border);
+      padding: 32px 28px;
+      border-radius: 22px;
+      text-align: center;
+      max-width: 520px;
+      width: 92%;
+      box-shadow: var(--glow), 0 40px 80px rgba(0,0,0,0.7);
+      animation: modalSlideIn 0.4s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .large-cert-content h4 {
+      font-family: 'Orbitron', monospace;
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    .large-cert-content img {
+      border-radius: 12px;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      border: 1px solid var(--card-border);
+    }
+
+    /* GLITCH TEXT */
+    .glitch {
+      position: relative;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      background: linear-gradient(135deg, #ffffff 0%, var(--primary) 50%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glitch::before {
+      animation: glitch1 3.5s infinite;
+      clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    }
+    .glitch::after {
+      animation: glitch2 3.5s infinite;
+      clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+    }
+    @keyframes glitch1 {
+      0%,90%,100% { transform: translate(0); opacity: 0; }
+      92%          { transform: translate(-3px, 1px); opacity: 0.8; }
+      94%          { transform: translate(3px, -1px); opacity: 0.8; }
+      96%          { transform: translate(-1px, 2px); opacity: 0; }
+    }
+    @keyframes glitch2 {
+      0%,85%,100% { transform: translate(0); opacity: 0; }
+      87%          { transform: translate(3px, -2px); opacity: 0.8; }
+      89%          { transform: translate(-3px, 1px); opacity: 0.8; }
+      91%          { transform: translate(1px, -1px); opacity: 0; }
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 40px 40px 30px;
+      background: var(--darker);
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+      color: var(--text-muted);
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 200px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+    footer p { font-size: 0.9rem; line-height: 2; }
+    footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    footer a:hover { text-shadow: var(--glow); }
+
+    .footer-logo {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    /* FADE IN ANIMATION ON SCROLL */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    }
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { flex-direction: column; text-align: center; padding: 60px 24px; }
+      .hero-stats { justify-content: center; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      header { padding: 14px 20px; flex-direction: column; gap: 12px; }
+      header h1 { font-size: 0.7rem; text-align: center; }
+      .carousel-item { flex: 0 0 100%; }
+    }
+    @media (max-width: 520px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .hero-text h2 { font-size: 1.9rem; }
+      .education-grid { flex-direction: column; align-items: center; }
+    }
+
+    /* TYPE ANIMATION */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CURSOR GLOW */
+    .cursor-glow {
+      position: fixed;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s;
+    }
   </style>
-  
 </head>
 <body>
-  
-  <!-- Encabezado -->
-  <header>
-    <h1>Tecnico Laboral y Profesional en Mantenimiento de Redes de Telecomunicaciones</h1>
-    <nav>
-      <a href="#presentacion">Inicio</a>
-      <a href="#certificados">Certificados</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
 
-  <!-- Sección principal -->
-  <section class="hero" id="presentacion">
-    <div class="hero-text">
-      <h2>Daniel Mateo Romero Madrid</h2>
-      <p>
-        Mi nombre es Daniel Romero Madrid, tengo 18 años y, soy Técnico Laboral en Redes de Telecomunicaciones. Culminé académicamente la formación de Técnico Profesional en Redes de Telecomunicaciones de la IUB (UNIBARRANQUILLA), formo parte del Semillero de Investigación en Aplicaciones Telemáticas de está misma Universidad. He sido ponente en varios eventos a nivel nacional e internacional. Con conocimientos en nuevas tecnologías, como la implementación de infraestructura de red, seguridad, soluciones basadas en la nube, inteligencia artificial, tanto generativa como de lenguaje natural (LLM). Mi objetivo es ofrecer soluciones innovadoras y optimizadas para garantizar y automatizar la conectividad y seguridad de cualquier sistema. Responsable y proactivo con capacidad para trabajar en equipo.
-      </p>
-      <button>Contáctame</button>
+<!-- Cursor Glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- Particles Container -->
+<div id="particles"></div>
+
+<!-- HEADER -->
+<header>
+  <h1>⚡ Tecnico Laboral y Profesional en Mantenimiento de Redes de Telecomunicaciones</h1>
+  <nav>
+    <a href="#presentacion">Inicio</a>
+    <a href="#certificados">Certificados</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="presentacion">
+  <div class="hero-text">
+    <div class="hero-badge">🛰️ Disponible para proyectos</div>
+    <h2 class="glitch" data-text="Daniel Mateo Romero Madrid">Daniel Mateo Romero Madrid</h2>
+    <p>
+      Mi nombre es Daniel Romero Madrid, tengo <span>18 años</span> y soy <span>Técnico Laboral en Redes de Telecomunicaciones</span>. 
+      Culminé la formación de Técnico Profesional en Redes de Telecomunicaciones de la <span>IUB (UNIBARRANQUILLA)</span>, formo parte del 
+      Semillero de Investigación en Aplicaciones Telemáticas. He sido ponente en varios eventos a nivel 
+      <span>nacional e internacional</span>. Con conocimientos en nuevas tecnologías: infraestructura de red, seguridad, 
+      soluciones basadas en la nube e <span>inteligencia artificial</span> (generativa y LLM). 
+      Responsable y proactivo con capacidad para trabajar en equipo.
+    </p>
+    <button class="cta-btn"><span>✉ Contáctame</span></button>
+    <div class="hero-stats">
+      <div class="stat-box" style="animation-delay:0.1s"><span class="stat-num">18</span><span class="stat-label">Años</span></div>
+      <div class="stat-box" style="animation-delay:0.2s"><span class="stat-num">5+</span><span class="stat-label">Proyectos</span></div>
+      <div class="stat-box" style="animation-delay:0.3s"><span class="stat-num">3+</span><span class="stat-label">Certs</span></div>
+      <div class="stat-box" style="animation-delay:0.4s"><span class="stat-num">🌎</span><span class="stat-label">Eventos</span></div>
     </div>
-    <!-- Modal -->
-<div class="modal" id="contactModal">
-  <div class="modal-content">
-    <h3>Mis redes sociales</h3>
-    <div class="social-links">
-      <a href="mailto:daniromam@mail.com" target="_blank" title="Google">
-        <img src="https://th.bing.com/th/id/R.0fa3fe04edf6c0202970f2088edea9e7?rik=joOK76LOMJlBPw&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fgoogle-logo-png-open-2000.png&ehk=0PJJlqaIxYmJ9eOIp9mYVPA4KwkGo5Zob552JPltDMw%3d&risl=&pid=ImgRaw&r=0" alt="Google">
-      </a>
-      <a href="https://www.linkedin.com/in/daniel-r-0870aa31b/" target="_blank" title="LinkedIn">
-        <img src="https://logospng.org/download/linkedin/logo-linkedin-icon-1536.png" alt="LinkedIn">
-      </a>
-      <a href="https://github.com/darrout13?tab=repositories" target="_blank" title="GitHub">
-        <img src="https://pngimg.com/uploads/github/github_PNG80.png" alt="GitHub">
-      </a>
+  </div>
+
+  <!-- Contact Modal -->
+  <div class="modal" id="contactModal">
+    <div class="modal-content">
+      <h3>🌐 Mis Redes Sociales</h3>
+      <div class="social-links">
+        <a href="mailto:daniromam@mail.com" target="_blank" title="Gmail">
+          <img src="https://th.bing.com/th/id/R.0fa3fe04edf6c0202970f2088edea9e7?rik=joOK76LOMJlBPw&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fgoogle-logo-png-open-2000.png&ehk=0PJJlqaIxYmJ9eOIp9mYVPA4KwkGo5Zob552JPltDMw%3d&risl=&pid=ImgRaw&r=0" alt="Google">
+        </a>
+        <a href="https://www.linkedin.com/in/daniel-r-0870aa31b/" target="_blank" title="LinkedIn">
+          <img src="https://logospng.org/download/linkedin/logo-linkedin-icon-1536.png" alt="LinkedIn">
+        </a>
+        <a href="https://github.com/darrout13?tab=repositories" target="_blank" title="GitHub">
+          <img src="https://pngimg.com/uploads/github/github_PNG80.png" alt="GitHub">
+        </a>
+      </div>
+      <button class="close-btn" onclick="closeModal()">✕ Cerrar</button>
     </div>
-    <button class="close-btn" onclick="closeModal()">Cerrar</button>
+  </div>
+
+  <div class="hero-image">
+    <img src="images/yo.png" alt="Daniel Romero">
+  </div>
+</section>
+
+<!-- SKILLS TICKER -->
+<div class="skills-ticker">
+  <div class="ticker-inner" id="tickerInner"></div>
+</div>
+
+<!-- EDUCATION SECTION -->
+<section class="education fade-in-section" id="formacion">
+  <h3 class="section-title">Formación Académica</h3>
+  <div class="education-grid">
+    <div class="education-card">
+      <h4>🎓 Bachiller</h4>
+      <p>Certificado de educación secundaria.</p>
+      <img src="images/bachiller.PNG" alt="Certificado Bachiller">
+      <button class="btn-glow" onclick="showLargeCertificate('images/bachiller.PNG','Certificado Bachiller')">🔍 Ampliar</button>
+    </div>
+    <div class="education-card">
+      <h4>📡 Tecnico</h4>
+      <p>Título Técnico en Redes de Telecomunicaciones.</p>
+      <img src="images/tecnico.png" alt="Certificado Tecnico">
+      <button class="btn-glow" onclick="showLargeCertificate('images/tecnico.png','Certificado Técnico')">🔍 Ampliar</button>
+    </div>
+    <div class="education-card">
+      <h4>🌐 Inglés</h4>
+      <p>Certificación de dominio del idioma inglés.</p>
+      <img src="images/certificado.PNG" alt="Certificado Ingles">
+      <button class="btn-glow" onclick="showLargeCertificate('images/certificado.PNG','Certificado Inglés')">🔍 Ampliar</button>
+    </div>
+  </div>
+</section>
+
+<!-- Large Certificate Modal -->
+<div id="largeCertificateModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);z-index:1000;justify-content:center;align-items:center;">
+  <div class="large-cert-content">
+    <h4 id="certificateTitle"></h4>
+    <img id="certificateImage" src="" alt="Certificado ampliado">
+    <br>
+    <button class="close-btn" onclick="closeLargeCertificate()">✕ Cerrar</button>
   </div>
 </div>
-<script>
-  // Abrir el modal
-  document.querySelector('button').addEventListener('click', function() {
-    document.getElementById('contactModal').style.display = 'flex';
-  });
 
-  // Cerrar el modal
-  function closeModal() {
-    document.getElementById('contactModal').style.display = 'none';
-  }
-</script>
-
-
-    <div class="hero-image">
-      <img src="images/yo.png" alt="Tu foto">
-    </div>
-  </section>
-<!-- Sección de Formación Académica -->
-<!-- Sección de Formación Académica -->
-<!-- Sección de Formación Académica -->
-<section class="education" id="formacion">
-  <h3 style="text-align: center; color: #007bff; font-size: 2rem; margin-bottom: 30px;">Formación Académica</h3>
-  <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px; padding: 0 20px;">
-    <!-- Certificado Bachiller -->
-    <div class="education-card" style="text-align: center;">
-      <h4 style="color: #007bff; font-size: 1.5rem;">Bachiller</h4>
-      <p style="font-size: 1rem; color: #555;">Certificado de educación secundaria.</p>
-      <img src="images/bachiller.PNG" alt="Certificado Bachiller" style="width: 250px; height: auto; border-radius: 10px; margin-bottom: 10px;">
-      <button style="margin: 10px auto; display: block; padding: 10px 20px; font-size: 1rem; color: white; background-color: #007bff; border: none; border-radius: 5px; cursor: pointer;"
-        onclick="showLargeCertificate('images/bachiller.PNG', 'Certificado Bachiller')">Ampliar</button>
-    </div>
-
-    <!-- Certificado Pregrado -->
-    <div class="education-card" style="text-align: center;">
-      <h4 style="color: #007bff; font-size: 1.5rem;">Tecnico</h4>
-      <p style="font-size: 1rem; color: #555;">Título Tecnico en Redes de Telecomunicaciones.</p>
-      <img src="images/tecnico.png" alt="Certificado Pregrado" style="width: 250px; height: auto; border-radius: 10px; margin-bottom: 10px;">
-      <button style="margin: 10px auto; display: block; padding: 10px 20px; font-size: 1rem; color: white; background-color: #007bff; border: none; border-radius: 5px; cursor: pointer;"
-        onclick="showLargeCertificate('images/tecnico.png', 'Certificado Pregrado')">Ampliar</button>
-    </div>
-
-    <!-- Certificado Inglés -->
-    <div class="education-card" style="text-align: center;">
-      <h4 style="color: #007bff; font-size: 1.5rem;">Inglés</h4>
-      <p style="font-size: 1rem; color: #555;">Certificación de dominio del idioma inglés.</p>
-      <img src="images/certificado.PNG" alt="Certificado Inglés" style="width: 250px; height: auto; border-radius: 10px; margin-bottom: 10px;">
-      <button style="margin: 10px auto; display: block; padding: 10px 20px; font-size: 1rem; color: white; background-color: #007bff; border: none; border-radius: 5px; cursor: pointer;"
-        onclick="showLargeCertificate('images/certificado.PNG', 'Certificado Inglés')">Ampliar</button>
-    </div>
-  </div>
-
-  <!-- Modal para ampliar certificado -->
-  <div id="largeCertificateModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000; justify-content: center; align-items: center;">
-    <div style="background-color: white; padding: 20px; border-radius: 10px; text-align: center; max-width: 500px; width: 90%;">
-      <h4 id="certificateTitle" style="color: #007bff; margin-bottom: 20px;"></h4>
-      <img id="certificateImage" src="https://via.placeholder.com/400x200" alt="Certificado ampliado" style="border-radius: 10px; max-width: 100%; height: auto; margin-bottom: 20px;">
-      <button style="margin: 0 auto; padding: 10px 20px; font-size: 1rem; color: white; background-color: #007bff; border: none; border-radius: 5px; cursor: pointer;"
-        onclick="closeLargeCertificate()">Cerrar</button>
-    </div>
-  </div>
-
-  <script>
-    function showLargeCertificate(imageSrc, title) {
-      const modal = document.getElementById('largeCertificateModal');
-      const titleElement = document.getElementById('certificateTitle');
-      const imageElement = document.getElementById('certificateImage');
-      
-      titleElement.textContent = title;
-      imageElement.src = imageSrc;
-      
-      modal.style.display = 'flex';
-    }
-
-    function closeLargeCertificate() {
-      const modal = document.getElementById('largeCertificateModal');
-      modal.style.display = 'none';
-    }
-  </script>
-
-</section>
-
-
-</section>
-
-  <!-- Sección de Certificados y Empresas -->
-  <section class="certificates" id="certificados">
-    <h3>Certificados de cursos completados</h3>
-    <div class="carousel-container">
-      <button class="carousel-button left" onclick="moveCarousel(-1)" id="prevButton">&#9664;</button>
-      <div class="carousel-track">
-        <!-- Certificados -->
-        <div class="carousel-item">
-          <div class="certificate-card">
-            <h4>Cisco</h4>
-            <p>Certificados en redes avanzadas para configurazion y automatización de equipos Cisco.</p>
-            <button onclick="location.href='cisco.html'">Ver más</button>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="certificate-card">
-            <h4>Google</h4>
-            <p>Certificación en ciberseguridad y gestión de amenazas.</p>
-            <button onclick="location.href='Google.html'">Ver más</button>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="company-card">
-            <h4>IBM</h4>
-            <p>Cursos especializados en la automatizacion de inteligencia artificial y ciencias de datos.</p>
-            <button onclick="location.href='ibm.html'">Ver más</button>
-          </div>
-        </div>
-        <!-- Empresas -->
-        <div class="carousel-item">
-          <div class="company-card">
-            <h4>Palo Alto</h4>
-            <p>Soluciones avanzadas en seguridad de redes.</p>
-            <button onclick="location.href='paloalto.html'">Ver más</button>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="company-card">
-            <h4>Universidad de California</h4>
-            <p>Formación avanzada en toma de desiciones.</p>
-            <button onclick="location.href='ucalifornia.html'">Ver más</button>
-          </div>
+<!-- CERTIFICATES CAROUSEL -->
+<section class="certificates fade-in-section" id="certificados">
+  <h3 class="section-title">Certificados de cursos completados</h3>
+  <div class="carousel-container">
+    <button class="carousel-button left" onclick="moveCarousel(-1)" id="prevButton">&#9664;</button>
+    <div class="carousel-track">
+      <div class="carousel-item">
+        <div class="certificate-card">
+          <div class="cert-icon">🌐</div>
+          <h4>Cisco</h4>
+          <p>Certificados en redes avanzadas para configuración y automatización de equipos Cisco.</p>
+          <button class="btn-glow" onclick="location.href='cisco.html'">Ver más →</button>
         </div>
       </div>
-      <button class="carousel-button right" onclick="moveCarousel(1)" id="nextButton">&#9654;</button>
+      <div class="carousel-item">
+        <div class="certificate-card">
+          <div class="cert-icon">🔒</div>
+          <h4>Google</h4>
+          <p>Certificación en ciberseguridad y gestión de amenazas.</p>
+          <button class="btn-glow" onclick="location.href='Google.html'">Ver más →</button>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="company-card">
+          <div class="cert-icon">🤖</div>
+          <h4>IBM</h4>
+          <p>Cursos especializados en automatización de inteligencia artificial y ciencias de datos.</p>
+          <button class="btn-glow" onclick="location.href='ibm.html'">Ver más →</button>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="company-card">
+          <div class="cert-icon">🛡️</div>
+          <h4>Palo Alto</h4>
+          <p>Soluciones avanzadas en seguridad de redes.</p>
+          <button class="btn-glow" onclick="location.href='paloalto.html'">Ver más →</button>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="company-card">
+          <div class="cert-icon">🎓</div>
+          <h4>Universidad de California</h4>
+          <p>Formación avanzada en toma de decisiones.</p>
+          <button class="btn-glow" onclick="location.href='ucalifornia.html'">Ver más →</button>
+        </div>
+      </div>
     </div>
-  </section>
-<!-- Sección de Proyectos y Logros -->
-<section class="portfolio" id="proyectos-logros">
+    <button class="carousel-button right" onclick="moveCarousel(1)" id="nextButton">&#9654;</button>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="portfolio fade-in-section" id="proyectos-logros">
   <h3>Proyectos y Logros</h3>
   <div class="portfolio-grid">
-    <!-- Proyecto 1 -->
     <a href="eventos.html" class="portfolio-item">
       <div class="portfolio-image" style="background-image: url('images/evento1.png');">
-        <div class="overlay">
-          <p>Participación en eventos nacionales e internacionales representando a mi institución.</p>
-        </div>
+        <div class="overlay"><p>Participación en eventos nacionales e internacionales representando a mi institución.</p></div>
       </div>
       <h4>Eventos Nacionales e Internacionales</h4>
     </a>
-    <!-- Proyecto 2 -->
     <a href="excelencia.html" class="portfolio-item">
       <div class="portfolio-image" style="background-image: url('https://play-lh.googleusercontent.com/csM83gu4nQ8cWcVFEjdiG-ATA2Ft8_X_6o7c0xKX8jktuT_YRh8bJOJrN4N5aHHMaaY');">
-        <div class="overlay">
-          <p>Reconocimiento académico por desempeño sobresaliente.</p>
-        </div>
+        <div class="overlay"><p>Reconocimiento académico por desempeño sobresaliente.</p></div>
       </div>
       <h4>Beca por Excelencia</h4>
     </a>
-    <!-- Proyecto 3 -->
     <a href="meteorologica.html" class="portfolio-item">
       <div class="portfolio-image" style="background-image: url('https://rasa.community/static/facebook-og-dc4e1962b0a58c63cd387fcea00d2225.png');">
-        <div class="overlay">
-          <p>Desarrollo de un sistema IA para predicción meteorológica con Rasa.</p>
-        </div>
+        <div class="overlay"><p>Desarrollo de un sistema IA para predicción meteorológica con Rasa.</p></div>
       </div>
       <h4>Proyecto IA Meteorológica</h4>
     </a>
-    <!-- Proyecto 4 -->
     <a href="gpt2.html" class="portfolio-item">
       <div class="portfolio-image" style="background-image: url('https://storage.googleapis.com/wandb-production.appspot.com/wandb-public-images/tk8kfl2kbl.png');">
-        <div class="overlay">
-          <p>Aplicación de GPT-2 para generación de texto creativo.</p>
-        </div>
+        <div class="overlay"><p>Aplicación de GPT-2 para generación de texto creativo.</p></div>
       </div>
       <h4>Proyecto con GPT-2</h4>
     </a>
-    <!-- Proyecto 5 -->
     <a href="matematica.html" class="portfolio-item">
       <div class="portfolio-image" style="background-image: url('https://theinventorhouse.org/wp-content/uploads/2022/03/curso-python-jovenes.png');">
-        <div class="overlay">
-          <p>Página interactiva para resolver problemas matemáticos dinámicamente.</p>
-        </div>
+        <div class="overlay"><p>Página interactiva para resolver problemas matemáticos dinámicamente.</p></div>
       </div>
       <h4>Página de Ejercicios Matemáticos</h4>
     </a>
-    <!-- Proyecto 6 -->
     <a href="llama3.html" class="portfolio-item">
       <div class="portfolio-image" style="background-image: url('https://opendatascience.com/wp-content/uploads/2023/02/Untitled-design-1-2.png');">
-        <div class="overlay">
-          <p>Optimización y fine-tuning de Llama 3.1 para tareas específicas.</p>
-        </div>
+        <div class="overlay"><p>Optimización y fine-tuning de Llama 3.1 para tareas específicas.</p></div>
       </div>
       <h4>Machine Learning con Llama 3.1</h4>
     </a>
   </div>
 </section>
 
-<style>
-  .portfolio {
-    padding: 40px 20px;
-    background-color: #f4f4f4; /* Fondo gris claro */
-    color: #333333; /* Texto en gris oscuro */
-    text-align: center;
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="footer-logo">DRM</div>
+  <p>Desarrollado por <strong style="color:var(--primary)">Daniel Mateo Romero Madrid</strong></p>
+  <p><a href="mailto:daniromema@gmail.com">daniromema@gmail.com</a></p>
+  <p style="margin-top:12px;font-size:0.78rem;color:rgba(255,255,255,0.2);">© 2025 · Telecomunicaciones & IA · Barranquilla, Colombia</p>
+</footer>
+
+<script>
+  /* ---- CURSOR GLOW ---- */
+  const cursorGlow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', e => {
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top  = e.clientY + 'px';
+  });
+
+  /* ---- PARTICLES ---- */
+  const particlesContainer = document.getElementById('particles');
+  const colors = ['#00d4ff','#7b2ff7','#ff3cac','#00ff88','#ffbb00'];
+  for (let i = 0; i < 35; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 5 + 2;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    p.style.cssText = `
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;
+      background:${color};
+      box-shadow:0 0 ${size*3}px ${color};
+      animation-duration:${Math.random()*15+10}s;
+      animation-delay:${Math.random()*10}s;
+    `;
+    particlesContainer.appendChild(p);
   }
 
-  .portfolio h3 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    color: #007bff; /* Azul principal de la página */
+  /* ---- SKILLS TICKER ---- */
+  const skills = [
+    'Redes Cisco', 'Ciberseguridad', 'Inteligencia Artificial', 'Machine Learning',
+    'LLM / GPT', 'Cloud Solutions', 'Python', 'Telecomunicaciones',
+    'Palo Alto', 'IBM Watson', 'Seguridad de Redes', 'Automatización',
+    'Fine-tuning LLaMA', 'Data Science', 'Network Infrastructure', 'Google Cloud'
+  ];
+  const ticker = document.getElementById('tickerInner');
+  const allSkills = [...skills, ...skills]; // duplicate for seamless loop
+  allSkills.forEach(skill => {
+    const span = document.createElement('div');
+    span.className = 'ticker-item';
+    span.innerHTML = `<div class="ticker-dot"></div>${skill}`;
+    ticker.appendChild(span);
+  });
+
+  /* ---- CAROUSEL ---- */
+  const track = document.querySelector('.carousel-track');
+  const prevButton = document.getElementById('prevButton');
+  const nextButton = document.getElementById('nextButton');
+  let currentIndex = 0;
+
+  function updateButtons() {
+    const totalItems = document.querySelectorAll('.carousel-item').length;
+    const visibleItems = window.innerWidth <= 900 ? 1 : 3;
+    prevButton.disabled = currentIndex === 0;
+    nextButton.disabled = currentIndex >= totalItems - visibleItems;
   }
 
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    justify-items: center;
-  }
-  .portfolio-item {
-  width: 100%;
-  max-width: 300px;
-  position: relative;
-  text-align: center;
-  background-color: #ffffff; /* Fondo blanco para cada item */
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: block; /* Asegura que el enlace cubra toda el área del proyecto */
-  text-decoration: none; /* Quita el subrayado */
-}
-
-  .portfolio-item:hover {
-  transform: scale(1.05); /* Efecto al pasar el mouse */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Más sombra al hacer hover */
-}
-
-  .portfolio-image {
-    width: 100%;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .portfolio-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 1rem;
-    text-align: center;
-    padding: 10px;
-    transition: opacity 0.3s ease;
-  }
-
-  .portfolio-image:hover .overlay {
-    opacity: 1;
-  }
-
-  .portfolio-item h4 {
-  margin-top: 15px;
-  font-size: 1.3rem;
-  color: #007bff; /* Azul para los títulos */
-  text-decoration: none; /* Asegura que el texto del título no tenga subrayado */
-}
-
-  /* Responsividad */
-  @media (max-width: 768px) {
-    .portfolio-grid {
-      grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
-    }
-  }
-
-  @media (max-width: 480px) {
-    .portfolio-grid {
-      grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
-    }
-  }
-</style>
-
-  <!-- Footer -->
-  <footer id="contacto">
-    <p>Desarrollado por Daniel Mateo Romero Madrid | <a href="mailto:daniromema@gmail.com">daniromema@gmail.com</a></p>
-  </footer>
-
-  <script>
-    const track = document.querySelector('.carousel-track');
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
-    let currentIndex = 0;
-
-    function updateButtons() {
-      const totalItems = document.querySelectorAll('.carousel-item').length;
-      const visibleItems = 3; // Ahora mostramos tres ítems
-
-      // Deshabilitar o habilitar los botones dependiendo de la posición
-      prevButton.disabled = currentIndex === 0;
-      nextButton.disabled = currentIndex >= totalItems - visibleItems;
-    }
-
-    function moveCarousel(direction) {
-      const items = document.querySelectorAll('.carousel-item');
-      const itemWidth = items[0].offsetWidth;
-
-      // Mover el carrusel
-      currentIndex += direction;
-
-      // Evitar que el índice salga de los límites
-      if (currentIndex < 0) currentIndex = 0;
-      if (currentIndex >= items.length - 3) currentIndex = items.length - 3;
-
-      track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-
-      // Actualizar el estado de los botones
-      updateButtons();
-    }
-
-    // Iniciar el estado de los botones al cargar la página
+  function moveCarousel(direction) {
+    const items = document.querySelectorAll('.carousel-item');
+    const visibleItems = window.innerWidth <= 900 ? 1 : 3;
+    const itemWidth = items[0].offsetWidth;
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = 0;
+    if (currentIndex >= items.length - visibleItems) currentIndex = items.length - visibleItems;
+    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
     updateButtons();
-  </script>
+  }
+  updateButtons();
+  window.addEventListener('resize', updateButtons);
+
+  /* ---- CONTACT MODAL ---- */
+  document.querySelector('.cta-btn').addEventListener('click', () => {
+    document.getElementById('contactModal').style.display = 'flex';
+  });
+  function closeModal() {
+    document.getElementById('contactModal').style.display = 'none';
+  }
+  document.getElementById('contactModal').addEventListener('click', e => {
+    if (e.target === document.getElementById('contactModal')) closeModal();
+  });
+
+  /* ---- LARGE CERT MODAL ---- */
+  function showLargeCertificate(src, title) {
+    document.getElementById('certificateTitle').textContent = title;
+    document.getElementById('certificateImage').src = src;
+    const modal = document.getElementById('largeCertificateModal');
+    modal.style.display = 'flex';
+  }
+  function closeLargeCertificate() {
+    document.getElementById('largeCertificateModal').style.display = 'none';
+  }
+  document.getElementById('largeCertificateModal').addEventListener('click', e => {
+    if (e.target === document.getElementById('largeCertificateModal')) closeLargeCertificate();
+  });
+
+  /* ---- SCROLL FADE IN ---- */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+
+  /* ---- STAT NUMBER COUNTER ANIMATION ---- */
+  function animateCounter(el, target, isNum) {
+    if (!isNum) return;
+    let current = 0;
+    const increment = Math.ceil(target / 40);
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = current + (el.dataset.suffix || '');
+    }, 40);
+  }
+
+  const statNums = document.querySelectorAll('.stat-num');
+  const statObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const text = el.textContent;
+        const num = parseInt(text);
+        if (!isNaN(num)) animateCounter(el, num, true);
+        statObserver.unobserve(el);
+      }
+    });
+  });
+  statNums.forEach(el => statObserver.observe(el));
+
+  /* ---- CARD TILT EFFECT ---- */
+  document.querySelectorAll('.portfolio-item, .certificate-card, .company-card, .education-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * -12;
+      card.style.transform = `perspective(600px) rotateY(${x}deg) rotateX(${y}deg) translateY(-8px) scale(1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+</script>
 </body>
 </html>
